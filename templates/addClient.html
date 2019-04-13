@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- import Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
+    <!-- import Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- import Element CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- import Element JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/cssAddClient.css">
+</head>
+
+<body>
+    <div id="app">
+        ABM Cliente
+        <el-row>
+            <el-card class="box-card">
+                Nombre
+                <el-input v-model="newClient.name"></el-input>
+                Direccion
+                <el-input v-model="newClient.address"></el-input>
+                Telefono
+                <el-input v-model="newClient.phone"></el-input>
+                E-mail
+                <el-input v-model="newClient.email"></el-input>
+                Observaciones
+                <el-input v-model="newClient.observations"></el-input>
+                <el-row style="margin-top:40px">
+                    <el-button class="CCBtn">Cuenta Corriente</el-button>
+                </el-row>
+                <el-row justify="space-around">
+                    <el-button @click="goBack" type="danger">Volver</el-button>
+                    <el-button @click="pushCustomer" type="success">Guardar</el-button>
+                </el-row>
+            </el-card>
+        </el-row>
+    </div>
+    <script src="/JS/jsAddClient.js"></script>
+</body>
+
+</html>

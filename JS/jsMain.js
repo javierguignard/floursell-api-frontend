@@ -11,7 +11,7 @@ new Vue({
     },
     logOut() {
       localStorage.removeItem('key')
-      axios.post("http://localhost:8000/%5Eauth/logout/").then(function (response) {
+      axios.post("http://localhost:8000/auth/logout/").then(function (response) {
         console.log(response.data.detail)
       })
         .catch(function (error) {
@@ -19,6 +19,9 @@ new Vue({
         });
       window.location.replace('/templates/login.html')
     },
+    addClient(){
+      window.location.replace('/templates/addClient.html')
+    }
   },
 
   beforeCreate() {

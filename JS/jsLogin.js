@@ -9,7 +9,7 @@ new Vue({
   },
   methods: {
     onSubmit() {
-      axios.post("http://localhost:8000/%5Eauth/login/", 
+      axios.post("http://localhost:8000/auth/login/", 
             {
                 "username": this.login.name,
                 "password": this.login.password,
@@ -30,5 +30,10 @@ new Vue({
         axios.get('http://localhost:8000/api/customer/', { 'headers': { 'Authorization': `Token ${key} `} }).then(response => console.log(response));
     })*/;
     }
-  }
+  },
+  beforeCreate() {
+    if (localStorage.getItem('key')){
+      localStorage.removeItem('key')
+    }
+  },
 })

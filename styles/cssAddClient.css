@@ -1,0 +1,13 @@
+body{
+    background-color: #d3dce6;
+}
+
+.el-col {
+    border-radius: 4px;
+  }
+
+.CCBtn {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

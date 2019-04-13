@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <!-- import Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
@@ -15,6 +16,8 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- import Element JavaScript -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/cssLogin.css">
 </head>
 
 <body>
@@ -24,14 +27,14 @@
                 <div>
                     <div class="div-data">
                         Usuario:
-                        <el-input v-on:keyup.enter="onSubmit" v-model="login.name"></el-input>
+                        <el-input v-model="login.name"></el-input>
                     </div>
                     <div class="div-data">
                         Contraseña:
-                        <el-input  type="password" v-model="login.password"></el-input>
+                        <el-input type="password" v-model="login.password"></el-input>
                     </div>
-                    <el-col class="xD">
-                        <el-button type="primary"  @click="onSubmit">Log In</el-button>
+                    <el-col class="buttonCol">
+                        <el-button type="primary" @click="onSubmit">Log In</el-button>
                     </el-col>
                 </div>
             </el-card>
@@ -39,7 +42,6 @@
 
     </div>
     <script src="/JS/jsLogin.js"></script>
-    <link rel="stylesheet" href="/styles/cssLogin.css">
 </body>
 
 </html>
