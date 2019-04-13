@@ -1,0 +1,17 @@
+.el-row {
+    margin-bottom: 20px;
+    margin-top: 150px;
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  body{
+      background-color: #d3dce6;
+  }
+  .xD {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+  .div-data{
+    margin-top:10px;
+  }
