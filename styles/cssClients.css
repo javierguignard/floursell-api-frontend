@@ -16,3 +16,6 @@
 .el-button {
   margin-top: 10px;
 }
+.el-table, .el-table-column{
+  border: 1px solid silver;
+}

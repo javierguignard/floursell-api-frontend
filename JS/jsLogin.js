@@ -1,3 +1,4 @@
+ELEMENT.locale(ELEMENT.lang.es);
 
 new Vue({
   el: '#app',
@@ -19,11 +20,11 @@ new Vue({
               localStorage.setItem("key", response.data.key)
               console.log(localStorage.getItem('key'))
               if (key){
-                window.location.replace('main.html')
+                window.location.replace('clients.html')
               }
             }).catch(error => {
               console.log(error)
-              this.$message.error("Usuario y/o Contraseña incorrectos");})
+              this.$message.error("Error en el inicio de sesion.");})
     /*.then(response => {
         key = response.data.key;
         console.log(`Token ${key}`);

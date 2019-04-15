@@ -1,3 +1,5 @@
+ELEMENT.locale(ELEMENT.lang.es);
+
 new Vue({
     el: '#app',
     data: {
@@ -21,7 +23,7 @@ new Vue({
                     "observations": this.newClient.observations,
                     "created_by": 1
                 },
-                { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} `}})
+                { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
                 .then(response => {
                     this.$message.success("Cliente creado con exito :D");
                 }).catch(error => {
@@ -30,8 +32,24 @@ new Vue({
                 })
         },
         goBack() {
-            window.location.replace('/templates/main.html')
+            window.location.replace('/templates/clients.html')
         },
+        logOut() {
+            localStorage.removeItem('key')
+            axios.post("http://localhost:8000/auth/logout/").then(function (response) {
+                console.log(response.data.detail)
+            })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            window.location.replace('/templates/login.html')
+        },
+        ClientsPage() {
+            window.location.replace('/templates/clients.html')
+        },
+        OrdersPage(){
+            window.location.replace('/templates/orders.html')
+          }
     },
 }
 )

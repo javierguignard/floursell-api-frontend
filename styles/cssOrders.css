@@ -1,0 +1,16 @@
+body{
+  background-color: #d3dce6;
+}
+table {
+  background-color: white;
+  border: 1px solid silver;
+  border-collapse: collapse;
+}
+tr {
+  border: 1px solid silver;
+}
+th {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border: 1px solid silver;
+}

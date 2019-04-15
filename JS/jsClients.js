@@ -1,9 +1,11 @@
+ELEMENT.locale(ELEMENT.lang.es);
+
 new Vue({
   el: '#app',
   data: {
     isCollapse: true,
-    input5: '',
-    tableData2: null,
+    tableData: null,
+    search: ''
   },
   methods: {
     menu() {
@@ -21,12 +23,18 @@ new Vue({
     },
     addClient(){
       window.location.replace('/templates/addClient.html')
+    },
+    ClientsPage(){
+      window.location.replace('/templates/clients.html')
+    },
+    OrdersPage(){
+      window.location.replace('/templates/orders.html')
     }
   },
 
   beforeCreate() {
       axios.get("http://127.0.0.1:8000/api/customer/",
       { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} `}})
-      .then(response => this.tableData2= response.data)
+      .then(response => this.tableData= response.data)
   },
-})
+});
