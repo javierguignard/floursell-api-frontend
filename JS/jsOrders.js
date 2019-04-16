@@ -23,6 +23,7 @@ new Vue({
             window.location.replace('/templates/login.html')
         },
         addOrder() {
+            window.location.replace('/templates/addOrder.html')
         },
         ClientsPage() {
             window.location.replace('/templates/clients.html')

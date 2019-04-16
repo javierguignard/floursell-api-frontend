@@ -29,7 +29,7 @@
         <el-menu class="el-menu-demo" mode="horizontal" background-color="#333" text-color="#fff"
             active-text-color="#ffd04b">
             <el-submenu index="1">
-                <template slot="title"><i class="material-icons">clear_all</i> Menu</template>
+                <template slot="title"><i class="material-icons">clear_all</i></template>
                 <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i> Clientes
                 </el-menu-item>
                 <el-menu-item index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos</el-menu-item>
@@ -50,41 +50,43 @@
                     </el-input>
                 </el-row>
                 <br>
-                <el-row class="table">
-                    <table class="" style="width:100%">
-                        <tr>
-                            <th>Nombre</th>
-                            <th></th>
-                        </tr>
-                        <div>
-                            <tr v-for="(x, index) in tableData" :key="index">
-                                <th>
-                                    <div v-for="(y, index2) in tableDataClients" :key="index2">
-                                        <div v-if="(x.customer == y.id)">
-                                            {{tableDataClients[index2]["name"]}}
-                                        </div>
-                                    </div>
-                                </th>
-                                <th>
-                                    <el-col :span="8">
-                                        <el-button @click=""><i style="font-size:13px;"
-                                                class="material-icons">add_shopping_cart</i>
-                                        </el-button>
-                                    </el-col>
-                                    <el-col :span="8">
-                                        <el-button @click=""><i class="el-icon-edit"></i>
-                                        </el-button>
-                                    </el-col>
-                                    <el-col :span="8">
-                                        <el-button @click="">
-                                            <i class="material-icons" style="font-size:13px;">remove_red_eye</i>
-                                        </el-button>
-                                    </el-col>
-                                </th>
+                <el-row >
+                        <table class="" style="width:100%">
+                            <tr >
+                                <th style="padding-top: 5px; padding-bottom: 5px;"><p>Nombre</p></th>
+                                <th></th>
                             </tr>
-                        </div>
-                    </table>
-                </el-row>
+                            <div>
+                                <tr v-for="(x, index) in tableData" :key="index">
+                                    <th>
+                                        <div v-for="(y, index2) in tableDataClients" :key="index2">
+                                            <div v-if="(x.customer == y.id)">
+                                                <p>{{tableDataClients[index2]["name"]}}</p>
+                                                <p>Telefono: {{tableDataClients[index2]["phone"]}}</p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <el-col :span="8">
+                                            <el-button @click=""><i style="font-size:13px;"
+                                                    class="material-icons">add_shopping_cart</i>
+                                            </el-button>
+                                        </el-col>
+                                        <el-col :span="8">
+                                            <el-button @click=""><i class="el-icon-edit"></i>
+                                            </el-button>
+                                        </el-col>
+                                        <el-col :span="8">
+                                            <el-button @click="addOrder">
+                                                <i class="material-icons" style="font-size:13px;">remove_red_eye</i>
+                                            </el-button>
+                                        </el-col>
+                                    </th>
+                                </tr>
+                            </div>
+                        </table>
+                    </el-row>
+                <br>
                 <el-row type="flex" justify="end">
                     <el-button style="margin-top: 10px" @click="addOrder" type="primary"><i class="el-icon-plus"></i>
                         Agregar Pedido

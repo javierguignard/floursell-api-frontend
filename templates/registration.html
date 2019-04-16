@@ -19,41 +19,42 @@
     <!-- import Element Spanish -->
     <script src="//unpkg.com/element-ui/lib/umd/locale/es.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="/styles/cssLogin.css">
+    <link rel="stylesheet" href="/styles/cssRegistration.css">
 </head>
 
 <body>
     <div id="app">
         <el-row>
-            <el-card class="loginCard">
+            <el-card>
                 <div>
                     <div class="div-data">
-                        Usuario:
-                        <el-input v-model="login.name"></el-input>
+                        Nuevo Usuario:
+                        <el-input v-model="register.name"></el-input>
                     </div>
                     <div class="div-data">
-                        Contraseña:
-                        <el-input type="password" v-model="login.password"></el-input>
+                        Nuevo Email:
+                        <el-input v-model="register.password"></el-input>
                     </div>
-                    <el-col class="buttonCol">
-                        <el-button type="primary" @click="onSubmit">Log In</el-button>
-                    </el-col>
+                    <div class="div-data">
+                        Nueva Contraseña:
+                        <el-input type="password" v-model="register.password1"></el-input>
+                    </div>
+                    <div class="div-data">
+                        Repita la Nueva Contraseña:
+                        <el-input type="password" v-model="register.password2"></el-input>
+                    </div>
+                    <el-row class="buttonCol">
+                        <el-button style="width:100%" type="primary" @click="onSubmit">Registrarse!</el-button>
+                    </el-row>
                 </div>
             </el-card>
         </el-row>
 
-        <el-row>
-            <el-card>
-                    <p>¿No te has registrado todavia?</p>
-                <el-row type="flex" class="registerCol">
-                    <el-button style="width: 100%" type="primary" @click="register">Registrarse!</el-button>
-                </el-row>
-
-            </el-card>
+        <el-row class="buttonCol">
+            <el-button style="width:100%" type="danger" @click="goBack">Volver</el-button>
         </el-row>
-
     </div>
-    <script src="/JS/jsLogin.js"></script>
+    <script src="/JS/jsRegistration.js"></script>
 </body>
 
 </html>

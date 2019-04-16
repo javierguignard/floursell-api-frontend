@@ -12,5 +12,9 @@ tr {
 th {
   padding-top: 18px;
   padding-bottom: 18px;
-  border: 1px solid silver;
+}
+
+p {
+  color: slategrey;
+  size: 1px;
 }

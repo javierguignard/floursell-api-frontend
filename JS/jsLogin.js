@@ -9,6 +9,9 @@ new Vue({
     }
   },
   methods: {
+    register(){
+      window.location.replace("/templates/registration.html")
+    },
     onSubmit() {
       axios.post("http://localhost:8000/auth/login/", 
             {

@@ -21,7 +21,7 @@
     <!-- import Google Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- CSS -->
-    <link rel="stylesheet" href="/styles/cssAddClient.css">
+    <link rel="stylesheet" href="/styles/cssAddOrder.css">
 </head>
 
 <body>
@@ -30,8 +30,10 @@
             active-text-color="#ffd04b">
             <el-submenu index="1">
                 <template slot="title"><i class="material-icons">clear_all</i></template>
-                <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i> Clientes</el-menu-item>
-                <el-menu-item @click="OrdersPage" index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos</el-menu-item>
+                <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i> Clientes
+                </el-menu-item>
+                <el-menu-item @click="OrdersPage" index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos
+                </el-menu-item>
                 <el-menu-item index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
                 <el-menu-item index="2-4"><i class="material-icons">person_pin</i> Produccion</el-menu-item>
             </el-submenu>
@@ -39,30 +41,42 @@
             <el-menu-item index="3" @click="logOut"><i class="material-icons">exit_to_app</i> Log Out</el-menu-item>
         </el-menu>
         <br>
-        ABM Cliente
+        ABM Pedidos
+        <br>
         <el-row>
             <el-card class="box-card">
-                Nombre
+                <p>Fecha</p>
+                <el-date-picker style="width: 100%" v-model="value1" type="date" placeholder="Pick a day">
+                </el-date-picker>
+                <p>Cliente</p>
                 <el-input v-model="newClient.name"></el-input>
-                Direccion
-                <el-input v-model="newClient.address"></el-input>
-                Telefono
-                <el-input v-model="newClient.phone"></el-input>
-                E-mail
-                <el-input v-model="newClient.email"></el-input>
-                Observaciones
-                <el-input v-model="newClient.observations"></el-input>
-                <el-row style="margin-top:40px">
-                    <el-button class="CCBtn">Cuenta Corriente <i class="el-icon-view el-icon-right"></i> </el-button>
+                <br>
+                <el-row type="flex" justify="center">
+                    <p>Pan pizza redondo</p>
                 </el-row>
-                <el-row type="flex" justify="space-around">
-                    <el-button @click="goBack" type="danger">Volver</el-button>
-                    <el-button @click="pushCustomer" type="success">Guardar</el-button>
+                <el-row type="flex" justify="center">
+                    <p>Pan pizza cuadrado</p>
                 </el-row>
+                <el-row type="flex" justify="center">
+                    <p>Pan Pancho</p>
+                </el-row>
+                <el-row type="flex" justify="center">
+                    <p>Pan hamburguesa</p>
+                </el-row>
+                <br>
+                <el-button class="CCBtn">Generar venta <i style="font-size:13px;"
+                        class="material-icons">add_shopping_cart</i></el-button>
+                <el-row :gutter="24" type="flex" justify="space-around">
+                    <el-col :span="12">
+                        <el-button style="width: 100%" @click="goBack" type="danger">Volver</el-button>
+                    </el-col>
+                    <el-col :span="12">
+                        <el-button style="width: 100%" @click="" type="success">Guardar</el-button>
+                    </el-col>
             </el-card>
         </el-row>
     </div>
-    <script src="/JS/jsAddClient.js"></script>
+    <script src="/JS/jsAddOrder.js"></script>
 </body>
 
 </html>
