@@ -72,7 +72,7 @@
                                         </el-col>
                                         <el-col :span="8">
                                             <el-button @click="">
-                                                <i class="material-icons" style="font-size:13px;">remove_red_eye</i>
+                                                <i class="material-icons" @click="pushClient(scope.row.id)" style="font-size:13px;">remove_red_eye</i>
                                             </el-button>
                                         </el-col>
                                     </el-row>

@@ -11,3 +11,13 @@ body{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.item{
+    margin-top:5px;
+    margin-bottom:5px;
+    background-color: aliceblue;
+    border-radius: 1px;
+    border:1px solid black;
+}
+p{
+    margin-left: 1px;
+}

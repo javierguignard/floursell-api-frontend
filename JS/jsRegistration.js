@@ -4,10 +4,10 @@ new Vue({
     el: '#app',
     data: {
         register: {
-            name: '',
-            email: '',
-            password1: '',
-            password2: '',
+            name: 'kaneki',
+            email: 'kaneki@gmail.com',
+            password1: 'pepe124',
+            password2: 'pepe1234',
         }
     },
     methods: {
@@ -15,7 +15,8 @@ new Vue({
             window.location.replace("/templates/login.html")
         },
         onSubmit() {
-            axios.post("http://localhost:8000/registration/",
+            axios.post("http://127.0.0.1:8000/registration/",
+            { 'headers': { 'Authorization': `Token 	db086ad201d75a6d100d9b9e04b444384200304e ` } },
                 {
                     "username": this.register.name,
                     "email": this.register.email,

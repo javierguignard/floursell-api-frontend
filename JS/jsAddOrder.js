@@ -4,6 +4,10 @@ new Vue({
     el: '#app',
     data: {
         value1: '',
+        item1:0,
+        item2:'',
+        item3:'',
+        item4:'',
         newClient: {
             name: "",
             address: "",
@@ -51,6 +55,10 @@ new Vue({
         OrdersPage(){
             window.location.replace('/templates/orders.html')
           }
+    },
+    beforeCreate() {
+        if(localStorage.getItem('key') == null){
+            window.location.replace('/templates/login.html')}
     },
 }
 )

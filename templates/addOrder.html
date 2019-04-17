@@ -44,24 +44,30 @@
         ABM Pedidos
         <br>
         <el-row>
-            <el-card class="box-card">
-                <p>Fecha</p>
-                <el-date-picker style="width: 100%" v-model="value1" type="date" placeholder="Pick a day">
-                </el-date-picker>
-                <p>Cliente</p>
-                <el-input v-model="newClient.name"></el-input>
+            <el-card>
+                <el-row>
+                    Fecha
+                    <el-date-picker style="width: 100%" v-model="value1" type="date" placeholder="Pick a day">
+                    </el-date-picker>
+                    Cliente
+                    <el-input v-model="newClient.name"></el-input>
+                </el-row>
                 <br>
-                <el-row type="flex" justify="center">
+                <el-row class="item" type="flex" justify="space-between">
                     <p>Pan pizza redondo</p>
+                    <el-input-number v-model="item1" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
-                <el-row type="flex" justify="center">
+                <el-row class="item" type="flex" justify="space-between">
                     <p>Pan pizza cuadrado</p>
+                    <el-input-number v-model="item2" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
-                <el-row type="flex" justify="center">
+                <el-row class="item" type="flex" justify="space-between">
                     <p>Pan Pancho</p>
+                    <el-input-number v-model="item3" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
-                <el-row type="flex" justify="center">
+                <el-row class="item" type="flex" justify="space-between">
                     <p>Pan hamburguesa</p>
+                    <el-input-number v-model="item4" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
                 <br>
                 <el-button class="CCBtn">Generar venta <i style="font-size:13px;"
@@ -73,6 +79,7 @@
                     <el-col :span="12">
                         <el-button style="width: 100%" @click="" type="success">Guardar</el-button>
                     </el-col>
+                </el-row>
             </el-card>
         </el-row>
     </div>

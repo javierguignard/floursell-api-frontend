@@ -1,0 +1,10 @@
+body{
+    background-color: #d3dce6;
+}
+table{
+    background-color: aliceblue;
+    width: 100%;
+}
+td{
+    border: 1px solid black
+}

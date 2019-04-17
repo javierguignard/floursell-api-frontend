@@ -31,7 +31,7 @@ new Vue({
         OrdersPage() {
             window.location.replace('/templates/orders.html')
         },
-        getCustomerNames({row, rowIndex }) {
+        getCustomerNames({ row, rowIndex }) {
             for (x in tableDataClients) {
                 console.log("digame")
                 if (row.customer === x.id) {
@@ -50,5 +50,9 @@ new Vue({
         axios.get("http://127.0.0.1:8000/api/customer/",
             { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
             .then(response => this.tableDataClients = response.data)
+
+        if (localStorage.getItem('key') == null) {
+            window.location.replace('/templates/login.html')
+        }
     },
 });

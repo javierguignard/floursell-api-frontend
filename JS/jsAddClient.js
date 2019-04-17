@@ -51,5 +51,9 @@ new Vue({
             window.location.replace('/templates/orders.html')
           }
     },
+    beforeCreate() {
+        if(localStorage.getItem('key') == null){
+            window.location.replace('/templates/login.html')}
+    },
 }
 )
