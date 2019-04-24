@@ -31,9 +31,6 @@ new Vue({
                     this.$message.error(error.toString());
                 })
         },
-        goBack() {
-            window.location.replace('/templates/clients.html')
-        },
         logOut() {
             localStorage.removeItem('key')
             axios.post("http://localhost:8000/auth/logout/").then(function (response) {

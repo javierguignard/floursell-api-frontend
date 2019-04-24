@@ -21,7 +21,7 @@
     <!-- import Google Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- CSS -->
-    <link rel="stylesheet" href="/styles/cssAddOrder.css">
+    <link rel="stylesheet" href="/styles/cssAddSell.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
             <el-menu-item index="3" @click="logOut"><i class="material-icons">exit_to_app</i> Log Out</el-menu-item>
         </el-menu>
         <br>
-        ABM Pedidos
+        ABM Ventas
         <br>
         <el-row>
             <el-card>
@@ -70,11 +70,15 @@
                     <el-input-number v-model="item4" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
                 <br>
-                <el-button @click="addSell" class="CCBtn">Generar venta <i style="font-size:13px;"
-                        class="material-icons">add_shopping_cart</i></el-button>
+                <el-row :gutter="24" type="flex" justify="end">
+                    <el-col :span="12">
+                        <el-button style="width: 100%" @click="newPayment">+ pago</el-button>
+                    </el-col>
+                </el-row>
+                <br>
                 <el-row :gutter="24" type="flex" justify="space-around">
                     <el-col :span="12">
-                        <el-button style="width: 100%" @click="" type="danger">Eliminar</el-button>
+                        <el-button style="width: 100%" @click="" type="danger">eliminar</el-button>
                     </el-col>
                     <el-col :span="12">
                         <el-button style="width: 100%" @click="" type="success">Guardar</el-button>
@@ -83,7 +87,8 @@
             </el-card>
         </el-row>
     </div>
-    <script src="/JS/jsAddOrder.js"></script>
+
+    <script src="/JS/jsAddSell.js"></script>
 </body>
 
 </html>

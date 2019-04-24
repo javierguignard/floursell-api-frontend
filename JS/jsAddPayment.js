@@ -19,6 +19,7 @@ new Vue({
             localStorage.removeItem('key')
             axios.post("http://localhost:8000/auth/logout/").then(function (response) {
                 console.log(response.data.detail)
+                window.location.replace("/templates/login.html")
             })
         },
         goBack(){

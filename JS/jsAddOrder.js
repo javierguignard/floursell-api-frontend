@@ -36,9 +36,6 @@ new Vue({
                     this.$message.error(error.toString());
                 })
         },
-        goBack() {
-            window.location.replace('/templates/orders.html')
-        },
         logOut() {
             localStorage.removeItem('key')
             axios.post("http://localhost:8000/auth/logout/").then(function (response) {
@@ -54,6 +51,9 @@ new Vue({
         },
         OrdersPage(){
             window.location.replace('/templates/orders.html')
+          },
+        addSell(){
+            window.location.replace('/templates/addSell.html')
           }
     },
     beforeCreate() {

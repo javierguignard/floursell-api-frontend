@@ -42,13 +42,13 @@
         </el-menu>
         <div v-for="(client, index) in clientData" :key="index">
             <div v-if="client.id == clientID">
-                <p>Cuenta del Cliente: {{client.name}}</p>
+                <p>ABM Pago {{client.name}}</p>
             </div>
         </div>
         <el-card>
             <el-row>
                 Monto
-                <el-input-number style="width: 100%"></el-input-number>
+                <el-input-number v-model="amount" style="width: 100%"></el-input-number>
             </el-row>
             <br>
             <el-row>
@@ -61,7 +61,7 @@
         <el-card>
             <el-row :gutter="24" type="flex" justify="space-around">
                 <el-col :span="12">
-                    <el-button style="width: 100%" @click="goBack" type="danger">Volver</el-button>
+                    <el-button style="width: 100%" @click="" type="danger">Eliminar</el-button>
                 </el-col>
                 <el-col :span="12">
                     <el-button style="width: 100%" @click="" type="success">Guardar</el-button>
