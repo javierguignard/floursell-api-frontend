@@ -41,45 +41,43 @@
             <el-menu-item index="3" @click="logOut"><i class="material-icons">exit_to_app</i> Log Out</el-menu-item>
         </el-menu>
         <br>
-        ABM Pedidos
+        Planilla Producidos
         <br>
         <el-row>
             <el-card>
-                <el-row>
-                    Fecha
-                    <el-date-picker style="width:100%" v-model="date" type="date" placeholder="Pick a day">
-                    </el-date-picker>
+                <el-row type="flex" justify="center">
+                    Fecha: {{date.getDate()}} / {{date.getMonth()+1}} / {{date.getFullYear()}}
                 </el-row>
                 <br>
                 <el-row class="item" type="flex" justify="space-between">
                     <p>Pan pizza redondo</p>
-                    <p>2</p>
+                    <el-input-number v-model="item1" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
                 <el-row class="item" type="flex" justify="space-between">
                     <p>Pan pizza cuadrado</p>
-                    <p>0</p>
+                    <el-input-number v-model="item2" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
                 <el-row class="item" type="flex" justify="space-between">
                     <p>Pizzeta</p>
-                    <p>2</p>
+                    <el-input-number v-model="item3" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
                 <el-row class="item" type="flex" justify="space-between">
                     <p>Pan Pancho</p>
-                    <p>0</p>
+                    <el-input-number v-model="item4" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
                 <el-row class="item" type="flex" justify="space-between">
                     <p>Pan hamburguesa</p>
-                    <p>0</p>
+                    <el-input-number v-model="item5" style="width:45%; align-self: center;"></el-input-number>
                 </el-row>
             </el-card>
         </el-row>
         <el-row style="margin-top:75px;">
             <el-card>
-                <el-button @click="productionTemplatePage" style="width:100%;">Generar plantilla de produccion</el-button>
+                <el-button type="primary" style="width:100%;">Guardar</el-button>
             </el-card>
         </el-row>
     </div>
-    <script src="/JS/jsProductionOrders.js"></script>
+    <script src="/JS/jsProductionTemplate.js"></script>
 </body>
 
 </html>

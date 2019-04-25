@@ -6,7 +6,7 @@ new Vue({
         register: {
             name: 'kaneki',
             email: 'kaneki@gmail.com',
-            password1: 'pepe124',
+            password1: 'pepe1234',
             password2: 'pepe1234',
         }
     },
@@ -16,7 +16,7 @@ new Vue({
         },
         onSubmit() {
             axios.post("http://127.0.0.1:8000/registration/",
-            { 'headers': { 'Authorization': `Token 	db086ad201d75a6d100d9b9e04b444384200304e ` } },
+            
                 {
                     "username": this.register.name,
                     "email": this.register.email,

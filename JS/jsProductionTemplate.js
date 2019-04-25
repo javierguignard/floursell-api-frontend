@@ -4,6 +4,11 @@ new Vue({
     el: "#app",
     data: {
         date: new Date(),
+        item1: 2,
+        item2: 0,
+        item3: 2,
+        item4: 0,
+        item5: 0,
     },
     methods: {
         logOut() {
@@ -24,9 +29,6 @@ new Vue({
         },
         ProductionOrdersPage() {
             window.location.replace('/templates/productionOrders.html')
-        },
-        productionTemplatePage(){
-            window.location.replace('/templates/productionTemplate.html')
         },
     },
     beforeCreate() {
