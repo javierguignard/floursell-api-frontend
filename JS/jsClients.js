@@ -18,27 +18,30 @@ new Vue({
         });
       window.location.replace('/templates/login.html')
     },
-    addClient(){
+    addClient() {
       window.location.replace('/templates/addClient.html')
     },
-    ClientsPage(){
+    ClientsPage() {
       window.location.replace('/templates/clients.html')
     },
-    OrdersPage(){
+    OrdersPage() {
       window.location.replace('/templates/orders.html')
     },
-    pushClient(id){
+    ProductionOrdersPage() {
+      window.location.replace('/templates/productionOrders.html')
+    },
+    pushClient(id) {
       localStorage.setItem('clientID', id)
       window.location.replace("/templates/clientSells.html")
     }
   },
 
   beforeCreate() {
-      axios.get("http://127.0.0.1:8000/api/customer/",
-      { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} `}})
-      .then(response => this.tableData= response.data)
-      if(localStorage.getItem('key') == null){
-        window.location.replace('/templates/login.html')
-      }
+    axios.get("http://127.0.0.1:8000/api/customer/",
+      { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
+      .then(response => this.tableData = response.data)
+    if (localStorage.getItem('key') == null) {
+      window.location.replace('/templates/login.html')
+    }
   },
 });

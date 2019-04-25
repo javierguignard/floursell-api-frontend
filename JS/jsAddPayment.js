@@ -3,10 +3,10 @@ ELEMENT.locale(ELEMENT.lang.es);
 new Vue({
     el: "#app",
     data: {
-        clientID:localStorage.getItem('clientID'),
-        clientData:null,
-        amount:0,
-        date:'',
+        clientID: localStorage.getItem('clientID'),
+        clientData: null,
+        amount: 0,
+        date: '',
     },
     methods: {
         ClientsPage() {
@@ -22,9 +22,12 @@ new Vue({
                 window.location.replace("/templates/login.html")
             })
         },
-        goBack(){
+        goBack() {
             window.location.replace('/templates/clientSells.html')
-        }
+        },
+        ProductionOrdersPage() {
+            window.location.replace('/templates/productionOrders.html')
+        },
     },
     beforeCreate() {
         if (localStorage.getItem('key') == null) {

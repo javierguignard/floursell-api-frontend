@@ -31,6 +31,9 @@ new Vue({
         OrdersPage() {
             window.location.replace('/templates/orders.html')
         },
+        ProductionOrdersPage() {
+            window.location.replace('/templates/productionOrders.html')
+        },
         getCustomerNames({ row, rowIndex }) {
             for (x in tableDataClients) {
                 console.log("digame")

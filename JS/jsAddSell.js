@@ -37,6 +37,9 @@ new Vue({
         newPayment() {
             window.location.replace('/templates/addPayment.html')
         },
+        ProductionOrdersPage() {
+            window.location.replace('/templates/productionOrders.html')
+        },
     },
     beforeCreate() {
 

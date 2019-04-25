@@ -30,12 +30,12 @@
             active-text-color="#ffd04b">
             <el-submenu index="1">
                 <template slot="title"><i class="material-icons">clear_all</i></template>
-                <el-menu-item @click="" index="2-1"><i class="material-icons">person_outline</i> Clientes
+                <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i> Clientes
                 </el-menu-item>
-                <el-menu-item @click="" index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos
+                <el-menu-item @click="OrdersPage" index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos
                 </el-menu-item>
-                <el-menu-item index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
-                <el-menu-item index="2-4"><i class="material-icons">person_pin</i> Produccion</el-menu-item>
+                <el-menu-item @click=" " index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
+                <el-menu-item @click="ProductionOrdersPage" index="2-4"><i class="material-icons">person_pin</i> Produccion</el-menu-item>
             </el-submenu>
             <el-menu-item index="2"><i class="material-icons">local_pizza</i> Panaderitos</el-menu-item>
             <el-menu-item index="3" @click="logOut"><i class="material-icons">exit_to_app</i> Log Out</el-menu-item>
@@ -44,7 +44,39 @@
         ABM Pedidos
         <br>
         <el-row>
-            
+            <el-card>
+                <el-row>
+                    Fecha
+                    <el-date-picker style="width:100%" v-model="date" type="date" placeholder="Pick a day">
+                    </el-date-picker>
+                </el-row>
+                <br>
+                <el-row class="item" type="flex" justify="space-between">
+                    <p>Pan pizza redondo</p>
+                    <p>2</p>
+                </el-row>
+                <el-row class="item" type="flex" justify="space-between">
+                    <p>Pan pizza cuadrado</p>
+                    <p>0</p>
+                </el-row>
+                <el-row class="item" type="flex" justify="space-between">
+                    <p>Pizzeta</p>
+                    <p>0</p>
+                </el-row>
+                <el-row class="item" type="flex" justify="space-between">
+                    <p>Pan Pancho</p>
+                    <p>0</p>
+                </el-row>
+                <el-row class="item" type="flex" justify="space-between">
+                    <p>Pan hamburguesa</p>
+                    <p>1</p>
+                </el-row>
+            </el-card>
+        </el-row>
+        <el-row style="margin-top:75px;">
+            <el-card>
+                <el-button style="width:100%;">Generar plantilla de produccion</el-button>
+            </el-card>
         </el-row>
     </div>
     <script src="/JS/jsProductionOrders.js"></script>

@@ -4,10 +4,10 @@ new Vue({
     el: '#app',
     data: {
         value1: '',
-        item1:0,
-        item2:'',
-        item3:'',
-        item4:'',
+        item1: 0,
+        item2: '',
+        item3: '',
+        item4: '',
         newClient: {
             name: "",
             address: "",
@@ -49,16 +49,20 @@ new Vue({
         ClientsPage() {
             window.location.replace('/templates/clients.html')
         },
-        OrdersPage(){
+        OrdersPage() {
             window.location.replace('/templates/orders.html')
-          },
-        addSell(){
+        },
+        ProductionOrdersPage() {
+            window.location.replace('/templates/productionOrders.html')
+        },
+        addSell() {
             window.location.replace('/templates/addSell.html')
-          }
+        }
     },
     beforeCreate() {
-        if(localStorage.getItem('key') == null){
-            window.location.replace('/templates/login.html')}
+        if (localStorage.getItem('key') == null) {
+            window.location.replace('/templates/login.html')
+        }
     },
 }
 )

@@ -14,6 +14,9 @@ new Vue({
         OrdersPage() {
             window.location.replace('/templates/orders.html')
         },
+        ProductionOrdersPage() {
+            window.location.replace('/templates/productionOrders.html')
+        },
         logOut() {
             localStorage.removeItem('key')
             axios.post("http://localhost:8000/auth/logout/").then(function (response) {

@@ -44,13 +44,17 @@ new Vue({
         ClientsPage() {
             window.location.replace('/templates/clients.html')
         },
-        OrdersPage(){
+        OrdersPage() {
             window.location.replace('/templates/orders.html')
-          }
+        },
+          ProductionOrdersPage() {
+            window.location.replace('/templates/productionOrders.html')
+        },
     },
     beforeCreate() {
-        if(localStorage.getItem('key') == null){
-            window.location.replace('/templates/login.html')}
+        if (localStorage.getItem('key') == null) {
+            window.location.replace('/templates/login.html')
+        }
     },
 }
 )

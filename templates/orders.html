@@ -34,7 +34,7 @@
                 </el-menu-item>
                 <el-menu-item index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos</el-menu-item>
                 <el-menu-item index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
-                <el-menu-item index="2-4"><i class="material-icons">person_pin</i> Produccion</el-menu-item>
+                <el-menu-item @click="ProductionOrdersPage" index="2-4"><i class="material-icons">person_pin</i> Produccion</el-menu-item>
             </el-submenu>
             <el-menu-item index="2"><i class="material-icons">local_pizza</i> Panaderitos</el-menu-item>
             <el-menu-item index="3" @click="logOut"><i class="material-icons">exit_to_app</i> Log Out</el-menu-item>
