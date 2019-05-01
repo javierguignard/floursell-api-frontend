@@ -5,11 +5,13 @@ new Vue({
   data: {
     isCollapse: true,
     tableData: null,
-    search: ''
+    search: '',
+    userType:null,
   },
   methods: {
     logOut() {
       localStorage.removeItem('key')
+      localStorage.removeItem('userType')
       axios.post("http://localhost:8000/auth/logout/").then(function (response) {
         console.log(response.data.detail)
       })
@@ -43,5 +45,16 @@ new Vue({
     if (localStorage.getItem('key') == null) {
       window.location.replace('/templates/login.html')
     }
+    axios.get("http://127.0.0.1:8000/api/user_type/",
+    { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
+    .then(response => {
+      this.userType= response.data[0].account.user_type
+      localStorage.setItem("userType", response.data[0].account.user_type)
+    }).then(response=>{
+      if (localStorage.getItem("userType")== '1'){
+        window.location.replace('/templates/productionOrders.html')
+      }
+    }
+    )
   },
 });

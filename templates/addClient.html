@@ -30,10 +30,26 @@
             active-text-color="#ffd04b">
             <el-submenu index="1">
                 <template slot="title"><i class="material-icons">clear_all</i></template>
-                <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i> Clientes</el-menu-item>
-                <el-menu-item @click="OrdersPage" index="2-2"><i class="material-icons">add_shopping_cart</i> Pedidos</el-menu-item>
-                <el-menu-item index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
-                <el-menu-item @click="ProductionOrdersPage" index="2-4"><i class="material-icons">person_pin</i> Produccion</el-menu-item>
+                <div v-if="(userType== '2')">
+                    <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i>
+                        Clientes</el-menu-item>
+                    <el-menu-item @click="OrdersPage" index="2-2"><i class="material-icons">add_shopping_cart</i>
+                        Pedidos</el-menu-item>
+                    <el-menu-item index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
+                    <el-menu-item @click="ProductionOrdersPage" index="2-4"><i class="material-icons">person_pin</i>
+                        Produccion</el-menu-item>
+                </div>
+                <div v-else-if="(userType=='0')">
+                    <el-menu-item @click="ClientsPage" index="2-1"><i class="material-icons">person_outline</i>
+                        Clientes</el-menu-item>
+                    <el-menu-item @click="OrdersPage" index="2-2"><i class="material-icons">add_shopping_cart</i>
+                        Pedidos</el-menu-item>
+                    <el-menu-item index="2-3"><i class="material-icons">shopping_cart</i> Ventas</el-menu-item>
+                </div>
+                <div v-else>
+                    <el-menu-item @click="ProductionOrdersPage" index="2-4"><i class="material-icons">person_pin</i>
+                        Produccion</el-menu-item>
+                </div>
             </el-submenu>
             <el-menu-item index="2"><i class="material-icons">local_pizza</i> Panaderitos</el-menu-item>
             <el-menu-item index="3" @click="logOut"><i class="material-icons">exit_to_app</i> Log Out</el-menu-item>

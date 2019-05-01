@@ -3,6 +3,7 @@ ELEMENT.locale(ELEMENT.lang.es);
 new Vue({
     el:"#app",
     data: {
+        userType:localStorage.getItem("userType"),
         value1: '',
         item1:0,
         item2:'',
@@ -19,6 +20,7 @@ new Vue({
     methods: {
         logOut() {
             localStorage.removeItem('key')
+            localStorage.removeItem('userType')
             axios.post("http://localhost:8000/auth/logout/").then(function (response) {
                 console.log(response.data.detail)
                 window.location.replace("/templates/login.html")
