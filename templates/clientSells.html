@@ -64,23 +64,11 @@
                 <p>Ventas: </p>
                 <p>Saldo: $000.00</p>
             </el-row>
-            <table>
+            <table v-for="(sell, index) in sells" :key="index">
                 <tr>
-                    <td>
-                        <p>$160.00</p>
-                        25/05/2019
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>$160.00</p>
-                        25/05/2019
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>$160.00</p>
-                        25/05/2019
+                    <td v-if="(sell.customer == clientID)">
+                        <p v-for="(item, index) in sell.items" :key="index">$ {{item.amount}}</p>
+                        {{sell.creation_date}}
                     </td>
                 </tr>
             </table>
@@ -88,23 +76,11 @@
             <el-row>
                 <p>Pagos: </p>
             </el-row>
-            <table>
-                <tr>
+            <table v-for="payment in payments">
+                <tr v-if="(payment.customer == clientID)">
                     <td>
-                        <p>$160.00</p>
-                        25/05/2019
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>$160.00</p>
-                        25/05/2019
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>$160.00</p>
-                        25/05/2019
+                        <p>$ {{payment.amount}}</p>
+                        {{payment.creation_date}}
                     </td>
                 </tr>
             </table>

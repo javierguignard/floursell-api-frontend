@@ -3,11 +3,11 @@ ELEMENT.locale(ELEMENT.lang.es);
 new Vue({
     el: "#app",
     data: {
-        userType:localStorage.getItem("userType"),
+        userType: localStorage.getItem("userType"),
         clientID: localStorage.getItem('clientID'),
         clientData: null,
         amount: 0,
-        date: '',
+        date: new Date(),
     },
     methods: {
         ClientsPage() {
@@ -24,8 +24,16 @@ new Vue({
                 window.location.replace("/templates/login.html")
             })
         },
-        goBack() {
-            window.location.replace('/templates/clientSells.html')
+        save() {
+            axios.post("http://127.0.0.1:8000/api/payment/", {
+                "amount": this.amount,
+                "created_by": localStorage.getItem("userID"),
+                "customer": this.clientID
+            }, { 'headers': { 'Authorization': `Token  ` } },
+                
+            ).catch(error => {
+                    console.log(localStorage.getItem('key'))
+                })
         },
         ProductionOrdersPage() {
             window.location.replace('/templates/productionOrders.html')
@@ -38,5 +46,8 @@ new Vue({
         axios.get("http://127.0.0.1:8000/api/customer/",
             { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
             .then(response => this.clientData = response.data)
+            .catch(error => {
+                console.log(error)
+            })
     },
 })

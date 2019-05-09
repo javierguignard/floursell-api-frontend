@@ -87,8 +87,8 @@
                                             </el-button>
                                         </el-col>
                                         <el-col :span="8">
-                                            <el-button @click="">
-                                                <i class="material-icons" @click="pushClient(scope.row.id)"
+                                            <el-button @click="pushClient(scope.row.id)">
+                                                <i class="material-icons" 
                                                     style="font-size:13px;">remove_red_eye</i>
                                             </el-button>
                                         </el-col>
@@ -97,17 +97,14 @@
                             </el-table-column>
                         </el-table>
                     </el-row>
-                    <el-row type="flex" justify="end">
-                        <el-button @click="addClient" type="primary"><i class="el-icon-plus"></i> Agregar Cliente
-                        </el-button>
-                    </el-row>
-
-
-
                 </el-main>
             </el-container>
-        </el-container>
 
+        </el-container>
+        <el-row type="flex" justify="end">
+            <el-button @click="addClient" type="primary"><i class="el-icon-plus"></i> Agregar Cliente
+            </el-button>
+        </el-row>
     </div>
     <script src="/JS/jsClients.js"></script>
 

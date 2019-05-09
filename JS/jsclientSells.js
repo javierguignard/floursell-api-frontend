@@ -6,6 +6,8 @@ new Vue({
         userType:localStorage.getItem("userType"),
         clientID: localStorage.getItem('clientID'),
         clientData: null,
+        sells:null,
+        payments:null,
     },
     methods: {
 
@@ -34,8 +36,19 @@ new Vue({
         if (localStorage.getItem('key') == null) {
             window.location.replace('/templates/login.html')
         }
+
         axios.get("http://127.0.0.1:8000/api/customer/",
             { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
             .then(response => this.clientData = response.data)
+        
+        axios.get("http://127.0.0.1:8000/api/sell/",
+        { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
+        .then(response => this.sells = response.data)  
+
+        axios.get("http://127.0.0.1:8000/api/payment/",
+        { 'headers': { 'Authorization': `Token ${localStorage.getItem('key')} ` } })
+        .then(response =>{this.payments = response.data
+        localStorage.setItem("userID", response.data[0].created_by)
+        }) 
     },
 })
