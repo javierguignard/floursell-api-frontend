@@ -19,7 +19,7 @@ const routes = [
     ]
   },
   {
-    path: '',
+    path: 'hola',
     component: App,
     children: [
       { path: '/login', name: 'login', component: Login },
