@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       username: null,
-      email: "",
+      email: null,
       password1: null,
       password2: null
     };

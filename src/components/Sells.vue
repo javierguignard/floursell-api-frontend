@@ -1,6 +1,8 @@
 <template>
   <div id="sells">
-    <h1>Sells</h1>
+    <el-row type="flex" justify="center">
+      <h1>Sells</h1>
+    </el-row>
   </div>
 </template>
 

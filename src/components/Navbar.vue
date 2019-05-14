@@ -14,13 +14,13 @@
         <el-menu-item @click="move('client')">
           <accountBox style="height:9px;"/>Clientes
         </el-menu-item>
-        <el-menu-item @click="move('sell')">
+        <el-menu-item @click="move('order')">
           <truckFast style="height:9px;"/>Pedidos
         </el-menu-item>
         <el-menu-item @click="move('sell')">
           <money style="height:9px;"/>Ventas
         </el-menu-item>
-        <el-menu-item @click="move('sell')">
+        <el-menu-item @click="move('productionOrders')">
           <bread style="height:6px;"/>Produccion
         </el-menu-item>
       </el-submenu>

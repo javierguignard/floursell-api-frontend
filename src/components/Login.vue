@@ -57,13 +57,16 @@ export default {
           email:"",
           password: this.password,
         })
-        .then(res =>
-        localStorage.setItem('key', res.data.key))
-        .then(this.move("client"))
+        .then(res =>{
+          localStorage.setItem('key', res.data.key)
+          if (res.data.key){
+            this.move("client")
+          }
+        })
         .catch(err =>
           this.$message({
             showClose: true,
-            message: err,
+            message: "Usuario y/o Contraseña incorrectas",
             type: "error"
           })
         );

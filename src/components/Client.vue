@@ -1,7 +1,7 @@
 <template>
   <div id="client">
     <el-row type="flex" justify="center">
-      <h1>Client</h1>
+      <h1>Clientes</h1>
     </el-row>
 
     <el-row type="flex" justify="center">
@@ -20,11 +20,11 @@
           </template>
         </el-table-column>
         <el-table-column>
-          <template slot-scope>
+          <template slot-scope="props">
             <el-row>
               <el-col :span="8">
-                <el-button>
-                  <cart/>
+                <el-button @click="addSells(props.row.id)">
+                  <cart />
                 </el-button>
               </el-col>
               <el-col :span="8">
@@ -41,13 +41,22 @@
           </template>
         </el-table-column>
       </el-table>
+      <br>
+      <el-row type="flex" justify="end">
+        <el-button
+          @click="move('AddClient')"
+          style="margin-right:10px;"
+          type="primary"
+        >Agregar Nuevo Cliente</el-button>
+      </el-row>
+      <br>
     </el-row>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import cart from "vue-material-design-icons/CartOutline.vue";
+import cart from "vue-material-design-icons/CartPlus.vue";
 import eye from "vue-material-design-icons/Eye.vue";
 export default {
   name: "Client",
@@ -62,12 +71,19 @@ export default {
     };
   },
   methods: {
-    hola() {
+    move(route) {
+      this.$router.push({ name: route });
+    },
+    /*hola() {
       console.log("hola");
       this.tableData.filter(
         !this.search ||
           this.tableData.name.toLowerCase().includes(this.search.toLowerCase())
       );
+    },*/
+    addSells(id){
+      localStorage.setItem("clientID", id)
+      this.move("AddSell")
     },
     getTableData() {
       axios
@@ -83,6 +99,6 @@ export default {
           })
         );
     }
-  },
+  }
 };
 </script>
