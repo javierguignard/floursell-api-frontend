@@ -4,7 +4,6 @@ import App from '../App'
 import Base from '../components/Base'
 import Client from '../components/Client'
 import Login from '../components/Login'
-import Sells from '../components/Sells'
 import Orders from '../components/Orders'
 import AddClient from '../components/AddClient'
 import ClientSells from '../components/ClientSells'
@@ -23,7 +22,6 @@ const routes = [
     component: Base,
     children: [
       { path: '/client', name: 'client', component: Client },
-      { path: '/sell', name: 'sell', component: Sells },
       { path: '/order', name: 'order', component: Orders },
       { path: '/addClient', name: 'AddClient', component: AddClient },
       { path: '/clientSells', name: 'ClientSells', component: ClientSells },

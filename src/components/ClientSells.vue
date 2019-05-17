@@ -1,11 +1,7 @@
 <template>
   <div id="ClientSells">
     <el-row type="flex" justify="center">
-      <div v-for="(client, z) in clients" :key="z">
-        <div v-if="client.id == clientID">
-          <h1>Cuenta del Cliente: {{client.name}}</h1>
-        </div>
-      </div>
+      <h1>Cta cte {{client.name}}</h1>
     </el-row>
     <el-card>
       <el-row type="flex" justify="space-between">
@@ -14,7 +10,10 @@
       </el-row>
       <table v-for="(sell, x) in sells" :key="x">
         <tr>
-          <td style="border: 1px solid black; background-color:grey;" v-if="(sell.customer == clientID)">
+          <td
+            style="border: 1px solid black; background-color:grey;"
+            v-if="(sell.customer == clientID)"
+          >
             <p v-for="(item, hola) in sell.items" :key="hola">{{item.product}} ${{item.amount}}</p>
             {{sell.creation_date}}
           </td>
@@ -47,9 +46,9 @@ export default {
   data() {
     return {
       clientID: localStorage.getItem("clientID"),
-      clients: null,
-      sells:null,
-      payments:null,
+      client: null,
+      sells: null,
+      payments: null
     };
   },
   methods: {
@@ -59,10 +58,15 @@ export default {
   },
   beforeCreate() {
     axios
-      .get("http://127.0.0.1:8000/api/customer/", {
-        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
-      })
-      .then(response => (this.clients = response.data))
+      .get(
+        "http://127.0.0.1:8000/api/customer/" +
+          localStorage.getItem("clientID") +
+          "/",
+        {
+          headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+        }
+      )
+      .then(response => (this.client = response.data))
       .catch(err =>
         this.$message({
           showClose: true,
@@ -84,7 +88,6 @@ export default {
       .then(response => {
         this.payments = response.data;
         localStorage.setItem("userID", response.data[0].created_by);
-        
       });
   }
 };

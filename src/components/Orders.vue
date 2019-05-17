@@ -22,10 +22,10 @@
             </div>
           </th>
           <th style=" width:35%">
-            <el-button @click="clientSells(x.customer)">
+            <el-button>
               <cart/>
             </el-button>
-            <el-button>
+            <el-button @click="moveWithID(x.customer, 'AddOrder')">
               <eye/>
             </el-button>
           </th>
@@ -62,12 +62,13 @@ export default {
     move(route) {
       this.$router.push({ name: route });
     },
-    clientSells(id){
-      localStorage.setItem("clientID", id)
-      this.move("ClientSells")
+    moveWithID(id, route) {
+      localStorage.setItem("clientID", id);
+      this.move(route);
     },
   },
   beforeCreate() {
+    localStorage.removeItem("clientID")
     axios
       .get("http://127.0.0.1:8000/api/order/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }

@@ -1,11 +1,7 @@
 <template>
   <div id="AddPayment">
     <el-row type="flex" justify="center">
-      <div v-for="(client, index) in clients" :key="index">
-        <div v-if="client.id == clientID">
-          <h1>Agregar pago | Cliente: {{client.name}}</h1>
-        </div>
-      </div>
+      <h1>Agregar pago | Cliente: {{client.name}}</h1>
     </el-row>
     <el-row>
       <el-card class="box-card">
@@ -44,7 +40,7 @@ export default {
       clientID: localStorage.getItem("clientID"),
       date: Date(),
       amount: null,
-      clients: null
+      client: null
     };
   },
   methods: {
@@ -61,11 +57,13 @@ export default {
             headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
           }
         )
-        .then(this.$message({
+        .then(
+          this.$message({
             showClose: true,
             message: "Pago creado con exito",
             type: "success"
-          }))
+          })
+        )
         .catch(err =>
           this.$message({
             showClose: true,
@@ -77,10 +75,15 @@ export default {
   },
   beforeCreate() {
     axios
-      .get("http://127.0.0.1:8000/api/customer/", {
-        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
-      })
-      .then(response => (this.clients = response.data))
+      .get(
+        "http://127.0.0.1:8000/api/customer/" +
+          localStorage.getItem("clientID") +
+          "/",
+        {
+          headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+        }
+      )
+      .then(response => (this.client = response.data))
       .catch(err =>
         this.$message({
           showClose: true,

@@ -6,7 +6,7 @@
 
     <el-row type="flex" justify="center">
       <el-input key v-model="search" placeholder="Buscar cliente por nombre"></el-input>
-      <el-button @click="getTableData()">Get Data (Beta)</el-button>
+      <el-button>Search </el-button>
     </el-row>
 
     <br>
@@ -23,17 +23,17 @@
           <template slot-scope="props">
             <el-row>
               <el-col :span="8">
-                <el-button @click="addSells(props.row.id)">
-                  <cart />
+                <el-button @click="moveWithID(props.row.id, 'AddOrder')">
+                  <cart/>
                 </el-button>
               </el-col>
               <el-col :span="8">
-                <el-button>
+                <el-button @click="moveWithID(props.row.id, 'AddClient')">
                   <i class="el-icon-edit"></i>
                 </el-button>
               </el-col>
               <el-col :span="8">
-                <el-button>
+                <el-button @click="moveWithID(props.row.id, 'ClientSells')">
                   <eye/>
                 </el-button>
               </el-col>
@@ -58,6 +58,11 @@
 import axios from "axios";
 import cart from "vue-material-design-icons/CartPlus.vue";
 import eye from "vue-material-design-icons/Eye.vue";
+
+function getClients(){
+
+};
+
 export default {
   name: "Client",
   components: {
@@ -81,24 +86,25 @@ export default {
           this.tableData.name.toLowerCase().includes(this.search.toLowerCase())
       );
     },*/
-    addSells(id){
-      localStorage.setItem("clientID", id)
-      this.move("AddSell")
+    moveWithID(id, route) {
+      localStorage.setItem("clientID", id);
+      this.move(route);
     },
-    getTableData() {
-      axios
-        .get("http://127.0.0.1:8000/api/customer/", {
-          headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+  },
+  beforeCreate() {
+    localStorage.removeItem("clientID")
+    axios
+      .get("http://127.0.0.1:8000/api/customer/", {
+        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+      })
+      .then(response => (this.tableData = response.data))
+      .catch(err =>
+        this.$message({
+          showClose: true,
+          message: err,
+          type: "error"
         })
-        .then(response => (this.tableData = response.data))
-        .catch(err =>
-          this.$message({
-            showClose: true,
-            message: err,
-            type: "error"
-          })
-        );
-    }
+      );
   }
 };
 </script>

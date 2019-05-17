@@ -71,6 +71,10 @@ export default {
           })
         );
     }
+  },
+  beforeCreate(){
+    localStorage.removeItem("clientID")
+    localStorage.removeItem("key")
   }
 };
 </script>

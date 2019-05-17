@@ -17,7 +17,7 @@
         <el-menu-item @click="move('order')">
           <truckFast style="height:9px;"/>Pedidos
         </el-menu-item>
-        <el-menu-item @click="move('sell')">
+        <el-menu-item @click="move('AddSell')">
           <money style="height:9px;"/>Ventas
         </el-menu-item>
         <el-menu-item @click="move('productionOrders')">
@@ -25,10 +25,10 @@
         </el-menu-item>
       </el-submenu>
       <el-menu-item>
-        <pizza style="height:9px;" :size="25"/>FlourSell
+        <pizza style="height:9px;" :size="25"/>  FlourSell
       </el-menu-item>
       <el-menu-item @click="logOut()">
-        <logout style="height:9px;"/>LogOut
+        <logout style="height:9px;"/>  Cerrar Sesion
       </el-menu-item>
     </el-menu>
   </div>

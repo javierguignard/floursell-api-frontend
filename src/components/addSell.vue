@@ -1,11 +1,7 @@
 <template>
   <div id="AddSell">
     <el-row type="flex" justify="center">
-      <div v-for="(client, index) in clients" :key="index">
-        <div v-if="client.id == clientID">
-          <h1>Agregar Venta | Cliente: {{client.name}}</h1>
-        </div>
-      </div>
+      <h1>Agregar Venta | Cliente: {{client.name}}</h1>
     </el-row>
     <el-row>
       <el-card class="box-card">
@@ -59,7 +55,9 @@
           </el-col>
         </el-row>
         <el-row type="flex" justify="end">
-          <el-col :span="8"><el-button style="width:100%">+ Pago</el-button></el-col>
+          <el-col :span="8">
+            <el-button style="width:100%">+ Pago</el-button>
+          </el-col>
         </el-row>
         <el-row type="flex" justify="space-between" style="margin-top:5px;">
           <el-button style="width:100%;" type="danger">Eliminar</el-button>
@@ -78,14 +76,14 @@ export default {
     return {
       date: Date(),
       clientID: localStorage.getItem("clientID"),
+      client: null,
       items: {
         pizzaRedonda: null,
         pizzaCuadrada: null,
         pizzeta: null,
         pancho: null,
         hamburguesa: null
-      },
-      clients: null
+      }
     };
   },
   methods: {
@@ -122,10 +120,15 @@ export default {
   },
   beforeCreate() {
     axios
-      .get("http://127.0.0.1:8000/api/customer/", {
-        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
-      })
-      .then(response => (this.clients = response.data))
+      .get(
+        "http://127.0.0.1:8000/api/customer/" +
+          localStorage.getItem("clientID") +
+          "/",
+        {
+          headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+        }
+      )
+      .then(response => (this.client = response.data))
       .catch(err =>
         this.$message({
           showClose: true,

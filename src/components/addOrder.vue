@@ -14,19 +14,31 @@
           </el-col>
         </el-row>
         <el-row type="flex" justify="center">
-          <el-col :span="12">
-            <p>Cliente:</p>
-          </el-col>
-          <el-col :span="18">
-            <el-select style="width:100%" v-model="selectedClient" placeholder="Select">
-              <el-option
-                v-for="client in clients"
-                :key="client.id"
-                :label="client.name"
-                :value="client.id"
-              ></el-option>
-            </el-select>
-          </el-col>
+          <div v-if="clientID">
+            <el-col :span="16">
+              <p>Cliente:</p>
+            </el-col>
+            <div v-for="(client, index) in clients" :key="index">
+              <el-col :span="16">
+                <p v-if="clientID == client.id">{{client.name}}</p>
+              </el-col>
+            </div>
+          </div>
+          <div v-else>
+            <el-col :span="10">
+              <p>Cliente:</p>
+            </el-col>
+            <el-col :span="24">
+              <el-select style="width:100%" v-model="selectedClient" placeholder="Select">
+                <el-option
+                  v-for="client in clients"
+                  :key="client.id"
+                  :label="client.name"
+                  :value="client.id"
+                ></el-option>
+              </el-select>
+            </el-col>
+          </div>
         </el-row>
         <el-row type="flex" justify="center">
           <el-col :span="12">
@@ -87,6 +99,7 @@ export default {
   data() {
     return {
       date: Date(),
+      clientID: localStorage.getItem("clientID"),
       selectedClient: null,
       items: {
         pizzaRedonda: null,
