@@ -66,7 +66,7 @@ export default {
         .catch(err =>
           this.$message({
             showClose: true,
-            message: "Usuario y/o Contraseña incorrectas",
+            message: err,
             type: "error"
           })
         );

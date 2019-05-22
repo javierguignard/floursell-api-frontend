@@ -22,10 +22,10 @@
             </div>
           </th>
           <th style=" width:35%">
-            <el-button>
+            <el-button @click="moveWithID(x.customer, 'AddSell')">
               <cart/>
             </el-button>
-            <el-button @click="moveWithID(x.customer, 'AddOrder')">
+            <el-button @click="moveWithOrderID(x.id, 'AddOrder')">
               <eye/>
             </el-button>
           </th>
@@ -66,9 +66,14 @@ export default {
       localStorage.setItem("clientID", id);
       this.move(route);
     },
+    moveWithOrderID(id, route) {
+      localStorage.setItem("orderID", id);
+      this.move(route);
+    },
   },
   beforeCreate() {
-    localStorage.removeItem("clientID")
+    localStorage.removeItem("clientID"),
+    localStorage.removeItem("orderID")
     axios
       .get("http://127.0.0.1:8000/api/order/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }

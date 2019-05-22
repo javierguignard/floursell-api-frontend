@@ -18,7 +18,12 @@
           </el-button>
         </el-row>
         <el-row type="flex" justify="space-between" style="margin-top:20px;">
-          <el-button v-if="(clientID!=null)" style="width:100%;" type="danger">Eliminar</el-button>
+          <el-button
+            v-if="(clientID!=null)"
+            @click="borrar()"
+            style="width:100%;"
+            type="danger"
+          >Eliminar</el-button>
           <el-button style="width:100%;" @click="submit()" type="success">Guardar</el-button>
         </el-row>
       </el-card>
@@ -120,6 +125,34 @@ export default {
             })
           );
       }
+    },
+    borrar() {
+      axios
+        .delete(
+          "http://127.0.0.1:8000/api/customer/" +
+            localStorage.getItem("clientID") +
+            "/",
+          {
+            headers: {
+              Authorization: `Token ${localStorage.getItem("key")} `
+            }
+          }
+        )
+        .then(
+          this.$message({
+            showClose: true,
+            message: "Cliente Borrado con Exito",
+            type: "warning"
+          })
+        )
+        .catch(err =>
+          this.$message({
+            showClose: true,
+            message: err,
+            type: "error"
+          })
+        );
+        this.move('client')
     }
   },
   beforeCreate() {
