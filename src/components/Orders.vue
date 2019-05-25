@@ -17,7 +17,7 @@
             <div v-for="(y, index2) in tableDataClients" :key="index2">
               <div v-if="(x.customer == y.id)">
                 <p>{{tableDataClients[index2]["name"]}}</p>
-                <p>Telefono: {{tableDataClients[index2]["phone"]}}</p>
+                <p>{{tableData[index]["creation_date"].substring(0, 10)}}</p>
               </div>
             </div>
           </th>

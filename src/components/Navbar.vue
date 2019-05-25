@@ -17,9 +17,6 @@
         <el-menu-item @click="move('order')">
           <truckFast style="height:9px;"/>Pedidos
         </el-menu-item>
-        <el-menu-item @click="move('AddSell')">
-          <money style="height:9px;"/>Ventas
-        </el-menu-item>
         <el-menu-item @click="move('productionOrders')">
           <bread style="height:6px;"/>Produccion
         </el-menu-item>

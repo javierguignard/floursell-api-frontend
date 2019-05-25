@@ -145,7 +145,7 @@ export default {
               id: this.orderID,
               items: this.order.items,
               creation_date: this.order.creation_date,
-              last_modification_date: this.order.last_modification_date,
+              last_modification_date: new Date(),
               created_by: this.order.created_by,
               customer: this.order.customer
             },

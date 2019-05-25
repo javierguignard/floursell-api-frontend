@@ -12,7 +12,7 @@
         <el-input v-model="client.email"></el-input>Observaciones
         <el-input v-model="client.observations"></el-input>
         <el-row v-if="(clientID!=null)" type="flex" justify="center" style="margin-top:20px;">
-          <el-button style="width:100%">
+          <el-button style="width:100%" @click="move('ClientSells')">
             Cuenta Corriente
             <i class="el-icon-view el-icon-right"></i>
           </el-button>
