@@ -6,7 +6,7 @@
 
     <el-row type="flex" justify="center">
       <el-input key v-model="search" placeholder="Buscar cliente por nombre"></el-input>
-      <el-button>Search </el-button>
+      <el-button>Search</el-button>
     </el-row>
 
     <br>
@@ -59,9 +59,7 @@ import axios from "axios";
 import cart from "vue-material-design-icons/CartPlus.vue";
 import eye from "vue-material-design-icons/Eye.vue";
 
-function getClients(){
-
-};
+function getClients() {}
 
 export default {
   name: "Client",
@@ -89,10 +87,13 @@ export default {
     moveWithID(id, route) {
       localStorage.setItem("clientID", id);
       this.move(route);
-    },
+    }
   },
   beforeCreate() {
-    localStorage.removeItem("clientID")
+    localStorage.removeItem("clientID");
+    localStorage.removeItem("sellID");
+    localStorage.removeItem("paymentID");
+    localStorage.removeItem("orderID")
     axios
       .get("http://127.0.0.1:8000/api/customer/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }

@@ -21,7 +21,7 @@
             {{sell.creation_date.substring(0, 10)}}
           </td>
           <td>
-            <el-button>
+            <el-button @click="moveWithSellID(sell.id, 'AddSell')">
               <eye/>
             </el-button>
           </td>
@@ -46,6 +46,7 @@
     <br>
     <el-card style="margin-top:20px">
       <el-row style="margin-bottom:5px;"><el-button style="width:100%" @click="move('AddPayment')" type="primary">+ pago</el-button></el-row>
+      <el-row style="margin-bottom:5px;"><el-button style="width:100%" @click="move('AddSell')" type="primary">+ Venta</el-button></el-row>
       <el-row><el-button style="width:100%" type="danger" @click="move('client')">Volver</el-button></el-row>
     </el-card>
   </div>
@@ -74,10 +75,16 @@ export default {
     moveWithPaymentID(paymentID, route){
       localStorage.setItem("paymentID", paymentID)
       this.$router.push({name: route})
+    },
+    moveWithSellID(paymentID, route){
+      localStorage.setItem("sellID", paymentID)
+      this.$router.push({name: route})
     }
   },
   beforeCreate() {
+    localStorage.removeItem("sellID")
     localStorage.removeItem("paymentID")
+    localStorage.removeItem("orderID")
     axios
       .get(
         "http://127.0.0.1:8000/api/customer/" +

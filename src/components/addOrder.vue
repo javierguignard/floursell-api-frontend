@@ -50,11 +50,11 @@
             <el-col :span="18">
               <div v-if="order != null">
                 <div v-for="item2 in order.items" :key=item2.product>
-                  <el-input-number v-if="item.id == item2.product" v-model="item2.quantity" style="width:100%"></el-input-number>
+                  <el-input-number :controls="false" v-if="item.id == item2.product" v-model="item2.quantity" style="width:100%"></el-input-number>
                 </div>
               </div>
               <div v-else>
-                <el-input-number v-model="products[index].quantity"></el-input-number>
+                <el-input-number :controls="false" v-model="products[index].quantity"></el-input-number>
               </div>
             </el-col>
           </el-row>

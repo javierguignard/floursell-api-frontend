@@ -72,7 +72,9 @@ export default {
     },
   },
   beforeCreate() {
-    localStorage.removeItem("clientID"),
+    localStorage.removeItem("clientID");
+    localStorage.removeItem("sellID");
+    localStorage.removeItem("paymentID");
     localStorage.removeItem("orderID")
     axios
       .get("http://127.0.0.1:8000/api/order/", {
