@@ -95,7 +95,7 @@ export default {
     postItems(type) {
       var items = [];
       var x;
-      if ((type = 1)) {
+      if (type == 1) {
         for (x in this.sell.items) {
           items.push({
             quantity: this.sell.items[x].quantity,

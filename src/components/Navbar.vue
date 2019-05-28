@@ -11,21 +11,21 @@
         <template slot="title">
           <menu-icon style="height:9px;"/>
         </template>
-        <el-menu-item @click="move('client')">
+        <el-menu-item v-if="(userType == 2 || userType == 0)" @click="move('client')">
           <accountBox style="height:9px;"/>Clientes
         </el-menu-item>
         <el-menu-item @click="move('order')">
           <truckFast style="height:9px;"/>Pedidos
         </el-menu-item>
-        <el-menu-item @click="move('productionOrders')">
+        <el-menu-item  v-if="(userType == 2 || userType == 1)" @click="move('productionOrders')">
           <bread style="height:6px;"/>Produccion
         </el-menu-item>
       </el-submenu>
       <el-menu-item>
-        <pizza style="height:9px;" :size="25"/>  FlourSell
+        <pizza style="height:9px;" :size="25"/>FlourSell
       </el-menu-item>
       <el-menu-item @click="logOut()">
-        <logout style="height:9px;"/>  Cerrar Sesion
+        <logout style="height:9px;"/>Cerrar sesion
       </el-menu-item>
     </el-menu>
   </div>
@@ -39,6 +39,8 @@ import accountBox from "vue-material-design-icons/AccountBox.vue";
 import truckFast from "vue-material-design-icons/TruckFast.vue";
 import money from "vue-material-design-icons/CurrencyUsd.vue";
 import bread from "vue-material-design-icons/BreadSlice.vue";
+import axios from "axios";
+
 export default {
   name: "Navbar",
   components: {
@@ -49,7 +51,12 @@ export default {
     truckFast,
     money,
     bread
-	},
+  },
+  data() {
+    return {
+      userType: null
+    };
+  },
   methods: {
     move(route) {
       this.$router.push({ name: route });
@@ -58,6 +65,20 @@ export default {
       localStorage.removeItem("key");
       this.move("login");
     }
+  },
+  created() {
+    axios
+      .get("http://127.0.0.1:8000/api/user_type/", {
+        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+      })
+      .then(response => this.userType = response.data[0].account.user_type)
+      .catch(err =>
+        this.$message({
+          showClose: true,
+          message: err,
+          type: "error"
+        })
+      );
   }
 };
 </script>

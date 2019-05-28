@@ -58,9 +58,6 @@
 import axios from "axios";
 import cart from "vue-material-design-icons/CartPlus.vue";
 import eye from "vue-material-design-icons/Eye.vue";
-
-function getClients() {}
-
 export default {
   name: "Client",
   components: {
@@ -93,7 +90,8 @@ export default {
     localStorage.removeItem("clientID");
     localStorage.removeItem("sellID");
     localStorage.removeItem("paymentID");
-    localStorage.removeItem("orderID")
+    localStorage.removeItem("orderID");
+    localStorage.removeItem("date");
     axios
       .get("http://127.0.0.1:8000/api/customer/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }

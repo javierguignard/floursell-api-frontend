@@ -10,7 +10,7 @@
             <p>Fecha</p>
           </el-col>
           <el-col :span="15">
-            <el-date-picker :disabled="true" v-model="date" style="width:100%"></el-date-picker>
+            <el-date-picker v-model="date" style="width:100%"></el-date-picker>
           </el-col>
         </el-row>
 
@@ -82,7 +82,7 @@ export default {
   name: "AddOrder",
   data() {
     return {
-      date: Date(),
+      date: null,
       orderID: localStorage.getItem("orderID"),
       order: null,
       selectedClient: null,
@@ -144,7 +144,7 @@ export default {
             {
               id: this.orderID,
               items: this.order.items,
-              creation_date: this.order.creation_date,
+              creation_date: this.date,
               last_modification_date: new Date(),
               created_by: this.order.created_by,
               customer: this.order.customer
@@ -176,7 +176,9 @@ export default {
             {
               items: this.postItems(),
               created_by: null,
-              customer: this.selectedClient
+              customer: this.selectedClient,
+              creation_date: this.date,
+              last_modification_date: new Date(),
             },
             {
               headers: {
@@ -236,7 +238,8 @@ export default {
             headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
           }
         )
-        .then(res => (this.order = res.data));
+        .then(res => {this.order = res.data,
+        this.date = res.data.creation_date});
     }
   }
 };

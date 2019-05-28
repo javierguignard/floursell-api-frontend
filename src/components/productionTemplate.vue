@@ -5,48 +5,138 @@
     </el-row>
     <el-row>
       <el-card>
-        <el-row
-          type="flex"
-          justify="center"
-        >Fecha: {{date.getDate()}} / {{date.getMonth()+1}} / {{date.getFullYear()}}</el-row>
+        <el-row type="flex" justify="center">Fecha: {{date}}</el-row>
         <br>
-        <el-row type="flex" justify="space-between">
-          <p>Pan pizza redondo</p>
-          <el-input-number style="width:45%; align-self: center;"></el-input-number>
-        </el-row>
-        <el-row type="flex" justify="space-between">
-          <p>Pan pizza cuadrado</p>
-          <el-input-number style="width:45%; align-self: center;"></el-input-number>
-        </el-row>
-        <el-row type="flex" justify="space-between">
-          <p>Pizzeta</p>
-          <el-input-number style="width:45%; align-self: center;"></el-input-number>
-        </el-row>
-        <el-row type="flex" justify="space-between">
-          <p>Pan Pancho</p>
-          <el-input-number style="width:45%; align-self: center;"></el-input-number>
-        </el-row>
-        <el-row type="flex" justify="space-between">
-          <p>Pan hamburguesa</p>
-          <el-input-number style="width:45%; align-self: center;"></el-input-number>
+        <el-row type="flex" justify="center" v-for="(item,index) in products" :key="index">
+          <el-col>
+            <p>{{item.title}}</p>
+          </el-col>
+          <el-col>
+            <el-input-number v-model="products[index].quantity"></el-input-number>
+          </el-col>
         </el-row>
       </el-card>
     </el-row>
     <el-row style="margin-top:75px;">
       <el-card>
-        <el-button type="primary" style="width:100%;">Guardar</el-button>
+        <el-button type="primary" @click="submit()" style="width:100%;">Guardar</el-button>
       </el-card>
     </el-row>
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "productionTemplate",
   data() {
     return {
-      date: new Date()
+      date: localStorage.getItem("date"),
+      reports: null,
+      products: null,
+      reportID: null
     };
   },
-  methods: {}
+  methods: {
+    move(route) {
+      this.$router.push({ name: route });
+    },
+    postItems(){
+      var items = []
+      var x
+      for (x in this.products){
+        items.push({product: this.products[x].id, quantity: this.products[x].quantity})
+      }
+      return items
+    },
+    submit() {
+      console.log(this.postItems())
+      if (this.reportID) {
+        axios.put(
+          "http://127.0.0.1:8000/api/report/" + this.reportID + "/",
+          {
+            items: this.postItems()
+          },
+          {
+            headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+          }
+        ).then(
+            this.$message({
+              showClose: true,
+              message: "Pedido creado con exito",
+              type: "success"
+            })
+          )
+          .catch(err =>
+            this.$message({
+              showClose: true,
+              message: err,
+              type: "error"
+            })
+          );
+      }else{
+        axios.post("http://127.0.0.1:8000/api/report/",
+          {
+            items: this.postItems(),
+            creation_date: this.date,
+          },
+          {
+            headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+          }
+        ).then(
+            this.$message({
+              showClose: true,
+              message: "Pedido creado con exito",
+              type: "success"
+            })
+          )
+          .catch(err =>
+            this.$message({
+              showClose: true,
+              message: err,
+              type: "error"
+            })
+          );
+      }
+    }
+  },
+  created() {
+    var bproducts = [];
+    var x;
+    var y;
+    var z;
+
+    axios
+      .get("http://127.0.0.1:8000/api/product/", {
+        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+      })
+      .then(res => {
+        var x;
+        for (x in res.data) {
+          bproducts.push({
+            id: res.data[x].id,
+            title: res.data[x].title,
+            quantity: 0
+          });
+        }
+      });
+
+    axios
+      .get("http://127.0.0.1:8000/api/report/", {
+        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+      })
+      .then(response => {
+        for (x in response.data) {
+          if (response.data[x].creation_date.substring(0, 10) == this.date) {
+            this.reportID = response.data[x].id;
+            for (y in response.data[x].items) {
+              if (response.data[x].items[y].product == bproducts[y].id) {
+                bproducts[y].quantity += response.data[x].items[y].quantity;
+              }
+            }
+          }
+        }
+      });
+    this.products = bproducts;
+  }
 };
 </script>

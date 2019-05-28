@@ -75,7 +75,8 @@ export default {
     localStorage.removeItem("clientID");
     localStorage.removeItem("sellID");
     localStorage.removeItem("paymentID");
-    localStorage.removeItem("orderID")
+    localStorage.removeItem("orderID");
+    localStorage.removeItem("date");
     axios
       .get("http://127.0.0.1:8000/api/order/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
