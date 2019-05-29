@@ -14,7 +14,7 @@
         <el-menu-item v-if="(userType == 2 || userType == 0)" @click="move('client')">
           <accountBox style="height:9px;"/>Clientes
         </el-menu-item>
-        <el-menu-item @click="move('order')">
+        <el-menu-item @click="move('order')" v-if="(userType == 2 || userType == 0)">
           <truckFast style="height:9px;"/>Pedidos
         </el-menu-item>
         <el-menu-item  v-if="(userType == 2 || userType == 1)" @click="move('productionOrders')">
@@ -37,7 +37,6 @@ import pizza from "vue-material-design-icons/Pizza.vue";
 import logout from "vue-material-design-icons/Logout.vue";
 import accountBox from "vue-material-design-icons/AccountBox.vue";
 import truckFast from "vue-material-design-icons/TruckFast.vue";
-import money from "vue-material-design-icons/CurrencyUsd.vue";
 import bread from "vue-material-design-icons/BreadSlice.vue";
 import axios from "axios";
 
@@ -49,7 +48,6 @@ export default {
     logout,
     accountBox,
     truckFast,
-    money,
     bread
   },
   data() {

@@ -12,11 +12,10 @@
           <el-col :span="18">
             <el-date-picker
               v-if="payment != null"
-              :disabled="true"
               v-model="payment.creation_date"
               style="width:100%"
             ></el-date-picker>
-            <el-date-picker v-else :disabled="true" v-model="date" style="width:100%"></el-date-picker>
+            <el-date-picker v-else v-model="date" style="width:100%"></el-date-picker>
           </el-col>
         </el-row>
         <el-row type="flex" justify="center">
@@ -102,7 +101,8 @@ export default {
             {
               amount: this.amount,
               created_by: null,
-              customer: this.clientID
+              customer: this.clientID,
+              creation_date: this.date,
             },
             {
               headers: {

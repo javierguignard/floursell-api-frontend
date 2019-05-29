@@ -19,7 +19,13 @@
     </el-row>
     <el-row style="margin-top:75px;">
       <el-card>
-        <el-button type="primary" @click="submit()" style="width:100%;">Guardar</el-button>
+        <el-row>
+          <el-button type="primary" @click="submit()" style="width:100%;">Guardar</el-button>
+        </el-row>
+        <br>
+        <el-row>
+          <el-button type="danger" @click="move('productionOrders')" style="width:100%;">volver</el-button>
+        </el-row>
       </el-card>
     </el-row>
   </div>
@@ -49,7 +55,6 @@ export default {
       return items
     },
     submit() {
-      console.log(this.postItems())
       if (this.reportID) {
         axios.put(
           "http://127.0.0.1:8000/api/report/" + this.reportID + "/",
@@ -62,8 +67,8 @@ export default {
         ).then(
             this.$message({
               showClose: true,
-              message: "Pedido creado con exito",
-              type: "success"
+              message: "planilla modificada con exito",
+              type: "warning"
             })
           )
           .catch(err =>
@@ -85,7 +90,7 @@ export default {
         ).then(
             this.$message({
               showClose: true,
-              message: "Pedido creado con exito",
+              message: "planilla creada con exito",
               type: "success"
             })
           )
@@ -103,7 +108,6 @@ export default {
     var bproducts = [];
     var x;
     var y;
-    var z;
 
     axios
       .get("http://127.0.0.1:8000/api/product/", {

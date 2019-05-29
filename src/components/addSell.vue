@@ -10,7 +10,7 @@
             <p>Fecha</p>
           </el-col>
           <el-col :span="18">
-            <el-date-picker :disabled="true" v-model="date" style="width:100%"></el-date-picker>
+            <el-date-picker v-model="date" style="width:100%"></el-date-picker>
           </el-col>
         </el-row>
         <div v-if="products">
@@ -123,7 +123,8 @@ export default {
               items: this.postItems(1),
               status: 1,
               created_by: null,
-              customer: this.clientID
+              customer: this.clientID,
+              creation_date: this.date
             },
             {
               headers: {
@@ -153,7 +154,8 @@ export default {
               items: this.postItems(2),
               status: 1,
               created_by: null,
-              customer: this.clientID
+              customer: this.clientID,
+              creation_date: this.date
             },
             {
               headers: {

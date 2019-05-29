@@ -5,8 +5,9 @@
     </el-row>
 
     <el-row type="flex" justify="center">
-      <el-input key v-model="search" placeholder="Buscar cliente por nombre"></el-input>
-      <el-button>Search</el-button>
+      <el-input v-model="search" placeholder="Buscar cliente por nombre">
+        <el-button slot="append" icon="el-icon-search" @click="filter()"></el-button>
+      </el-input>
     </el-row>
 
     <br>
@@ -57,33 +58,50 @@
 <script>
 import axios from "axios";
 import cart from "vue-material-design-icons/CartPlus.vue";
+import Magnify from "vue-material-design-icons/Magnify.vue";
 import eye from "vue-material-design-icons/Eye.vue";
 export default {
   name: "Client",
   components: {
     eye,
-    cart
+    cart,
+    Magnify
   },
   data() {
     return {
       search: null,
-      tableData: null
+      tableData: null,
+      clients: null
     };
   },
   methods: {
     move(route) {
       this.$router.push({ name: route });
     },
-    /*hola() {
-      console.log("hola");
-      this.tableData.filter(
-        !this.search ||
-          this.tableData.name.toLowerCase().includes(this.search.toLowerCase())
-      );
-    },*/
     moveWithID(id, route) {
       localStorage.setItem("clientID", id);
       this.move(route);
+    },
+    filter() {
+      
+      var x;
+      if (this.search == null) {
+        this.$message({
+          showClose: true,
+          message: "texto vacio",
+          type: "warning"
+        });
+      } else {
+        this.tableData = [];
+        for (x in this.clients) {
+          if (
+            this.clients[x].name
+              .toLowerCase()
+              .includes(this.search.toLowerCase())
+          )
+            this.tableData.push(this.clients[x]);
+        }
+      }
     }
   },
   beforeCreate() {
@@ -96,7 +114,10 @@ export default {
       .get("http://127.0.0.1:8000/api/customer/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
-      .then(response => (this.tableData = response.data))
+      .then(response => {
+        this.clients = response.data;
+        this.tableData = this.clients;
+      })
       .catch(err =>
         this.$message({
           showClose: true,
