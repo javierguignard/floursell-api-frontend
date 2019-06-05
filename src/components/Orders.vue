@@ -68,9 +68,9 @@ export default {
   },
   methods: {
     getMyDate() {
-      var myDay;
-      var myMonth;
-      var myYear;
+      let myDay;
+      let myMonth;
+      let myYear;
       if (this.date.getDate().toString().length == 1) {
         myDay = "0" + this.date.getDate();
       } else {
@@ -96,15 +96,13 @@ export default {
       this.move(route);
     },
     filter() {
-      var x;
-      var y;
+      let x;
+      let y;
       if (this.search == "") {
         if (this.date == null) {
-          console.log("1")
           this.tableData = this.orders;
           this.tableDataClients = this.clients;
         } else {
-          console.log("2")
           this.tableData = [];
           this.tableDataClients = this.clients;
           for (x in this.orders) {
@@ -117,7 +115,6 @@ export default {
         }
       } else {
         if (this.date == null) {
-          console.log("3")
           this.tableDataClients = [];
           this.tableData = []
           for (x in this.clients) {
@@ -138,7 +135,6 @@ export default {
             }
           }
         }else{
-          console.log("4")
           this.tableDataClients = [];
           this.tableData = []
           for (x in this.clients) {
@@ -166,8 +162,8 @@ export default {
     }
   },
   beforeCreate() {
-    var x;
-    var y;
+    let x;
+    let y;
     localStorage.removeItem("clientID");
     localStorage.removeItem("sellID");
     localStorage.removeItem("paymentID");
