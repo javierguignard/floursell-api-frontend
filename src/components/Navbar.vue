@@ -12,21 +12,25 @@
           <menu-icon style="height:9px;"/>
         </template>
         <el-menu-item v-if="(userType == 2 || userType == 0)" @click="move('client')">
-          <accountBox style="height:9px;"/>Clientes
+          <accountBox style="height:9px;"/> Clientes
         </el-menu-item>
         <el-menu-item @click="move('order')" v-if="(userType == 2 || userType == 0)">
-          <truckFast style="height:9px;"/>Pedidos
+          <truckFast style="height:9px;"/> Pedidos
         </el-menu-item>
         <el-menu-item  v-if="(userType == 2 || userType == 1)" @click="move('productionOrders')">
-          <bread style="height:6px;"/>Produccion
+          <bread style="height:6px;"/> Producción
+        </el-menu-item>
+        <el-divider></el-divider>
+        <el-menu-item   @click="logOut()">
+          <logout style="height:6px;"/> Salir
         </el-menu-item>
       </el-submenu>
       <el-menu-item>
         <pizza style="height:9px;" :size="25"/>FlourSell
       </el-menu-item>
-      <el-menu-item @click="logOut()">
-        <logout style="height:9px;"/>Cerrar sesion
-      </el-menu-item>
+      <!--<el-menu-item class="dock-right" @click="logOut()">-->
+        <!--<logout style="height:15px;"/>-->
+      <!--</el-menu-item>-->
     </el-menu>
   </div>
 </template>
@@ -80,3 +84,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+  .el-menu-horizontal > .el-menu-item.dock-right{
+    float: right;
+  }
+
+</style>
