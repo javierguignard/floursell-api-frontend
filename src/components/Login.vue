@@ -59,23 +59,33 @@ export default {
           password: this.password,
         })
         .then((response) =>{
-          localStorage.setItem('key', response.data.key)
+          localStorage.setItem('key', response.data.key);
           if (response.data.key){
-            this.move("client")
+            this.move("client");
           }
         })
-        .catch((error) =>
-          this.$message({
-            showClose: true,
-            message:(error),
-            type: "error"
-          })
+        .catch((error) =>{
+            let err = ""+error;
+            if (err.indexOf("400")>0){
+                  this.$message({
+                    showClose: true,
+                    message:'Usuario o contraseña invalido',
+                    type: "error"
+                  })
+              }else{
+                this.$message({
+                    showClose: true,
+                    message:error,
+                    type: "error"
+                })
+            }
+            }
         );
     }
   },
   beforeCreate(){
-    localStorage.removeItem("clientID")
-    localStorage.removeItem("key")
+    localStorage.removeItem("clientID");
+    localStorage.removeItem("key");
   }
 };
 </script>
