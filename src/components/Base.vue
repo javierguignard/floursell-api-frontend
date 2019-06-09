@@ -1,7 +1,11 @@
 <template>
   <div div="base">
     <Navbar/>
-    <router-view/>
+    <el-row  justify="center" gutter="0" >
+      <el-col :xs="24" :md="12" class="el-col-md-offset-6">
+        <router-view/>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
