@@ -18,10 +18,10 @@ Vue.use(VueRouter)
 
 const routes = [
   { 
-    path: '/base',
+    path: '/',
     component: Base,
     children: [
-      { path: '/client', name: 'client', component: Client },
+      { path: '', name: 'client', component: Client },
       { path: '/order', name: 'order', component: Orders },
       { path: '/addClient', name: 'AddClient', component: AddClient },
       { path: '/clientSells', name: 'ClientSells', component: ClientSells },
@@ -36,7 +36,7 @@ const routes = [
     path: '',
     component: App,
     children: [
-      { path: '', name: 'login', component: Login },
+      { path: '/login', name: 'login', component: Login },
       { path: '/registration', name: 'registration', component: Registration }
     ]
   }
