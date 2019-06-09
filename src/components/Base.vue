@@ -7,7 +7,8 @@
 
 <script>
 import Navbar from "./Navbar";
-import axios from "axios";
+//import {HTTP} from "./ApiConnection";
+import HTTP from "./ApiConnection"
 
 export default {
   name: "Base",
@@ -17,11 +18,11 @@ export default {
   methods: {
   },
   created() {
-    axios
-      .get("http://127.0.0.1:8000/api/user_type/", {
+    HTTP
+      .get("/api/user_type/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
-      .then(response =>{if (response.data[0].account.user_type == 1){
+      .then((response) =>{if (response.data[0].account.user_type == 1){
         this.$router.push({ name: "productionOrders" });
       }});
   },

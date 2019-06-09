@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 
 export default {
   name: "Registration",
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     submit() {
-      axios
+      HTTP
         .post("http://127.0.0.1:8000/registration/", {
           username: this.username,
           password1: this.password1,

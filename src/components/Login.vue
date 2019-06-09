@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import axios from "axios";
+//import {HTTP} from "./ApiConnection";
+import {HTTP_LOGIN} from "./ApiConnection"
 export default {
   name: "Login",
   data() {
@@ -51,22 +52,22 @@ export default {
       this.$router.push({ name: route });
     },
     submit() {
-      axios
-        .post("http://127.0.0.1:8000/auth/login/", {
+      HTTP_LOGIN
+        .post("/auth/login/", {
           username: this.username,
           email:"",
           password: this.password,
         })
-        .then(res =>{
-          localStorage.setItem('key', res.data.key)
-          if (res.data.key){
+        .then((response) =>{
+          localStorage.setItem('key', response.data.key)
+          if (response.data.key){
             this.move("client")
           }
         })
-        .catch(err =>
+        .catch((error) =>
           this.$message({
             showClose: true,
-            message: err,
+            message:(error),
             type: "error"
           })
         );

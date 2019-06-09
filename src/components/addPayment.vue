@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 export default {
   name: "AddPayment",
   data() {
@@ -61,9 +61,9 @@ export default {
     },
     submit() {
       if (localStorage.getItem("paymentID")) {
-        axios
+        HTTP
           .put(
-            "http://127.0.0.1:8000/api/payment/" +
+            "payment/" +
               localStorage.getItem("paymentID") +
               "/",
             {
@@ -95,9 +95,9 @@ export default {
             })
           );
       } else {
-        axios
+        HTTP
           .post(
-            "http://127.0.0.1:8000/api/payment/",
+            "payment/",
             {
               amount: this.amount,
               created_by: null,
@@ -127,9 +127,9 @@ export default {
       }
     },
     borrar() {
-      axios
+      HTTP
         .delete(
-          "http://127.0.0.1:8000/api/payment/" +
+          "payment/" +
             localStorage.getItem("paymentID") +
             "/",
           {
@@ -156,9 +156,9 @@ export default {
     },
   },
   beforeCreate() {
-    axios
+    HTTP
       .get(
-        "http://127.0.0.1:8000/api/customer/" +
+        "customer/" +
           localStorage.getItem("clientID") +
           "/",
         {
@@ -175,9 +175,9 @@ export default {
       );
 
     if (localStorage.getItem("paymentID")) {
-      axios
+      HTTP
         .get(
-          "http://127.0.0.1:8000/api/payment/" +
+          "payment/" +
             localStorage.getItem("paymentID") +
             "/",
           {

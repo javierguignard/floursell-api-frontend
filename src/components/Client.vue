@@ -56,10 +56,14 @@
 </template>
 
 <script>
-import axios from "axios";
+//import {HTTP} from "./ApiConnection";
+
 import cart from "vue-material-design-icons/CartPlus.vue";
 import Magnify from "vue-material-design-icons/Magnify.vue";
 import eye from "vue-material-design-icons/Eye.vue";
+
+import {HTTP} from "./ApiConnection";
+
 export default {
   name: "Client",
   components: {
@@ -110,15 +114,15 @@ export default {
     localStorage.removeItem("paymentID");
     localStorage.removeItem("orderID");
     localStorage.removeItem("date");
-    axios
-      .get("http://127.0.0.1:8000/api/customer/", {
-        headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
+      HTTP
+      .get("customer/", {
+          headers: {Authorization: `Token ${localStorage.getItem("key")} `}
       })
-      .then(response => {
+      .then((response) => {
         this.clients = response.data;
         this.tableData = this.clients;
       })
-      .catch(err =>
+      .catch((err) =>
         this.$message({
           showClose: true,
           message: err,

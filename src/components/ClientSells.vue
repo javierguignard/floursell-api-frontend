@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 import eye from "vue-material-design-icons/Eye.vue";
 export default {
   name: "ClientSells",
@@ -85,9 +85,9 @@ export default {
     localStorage.removeItem("sellID")
     localStorage.removeItem("paymentID")
     localStorage.removeItem("orderID")
-    axios
+    HTTP
       .get(
-        "http://127.0.0.1:8000/api/customer/" +
+        "customer/" +
           localStorage.getItem("clientID") +
           "/",
         {
@@ -103,14 +103,14 @@ export default {
         })
       );
 
-    axios
-      .get("http://127.0.0.1:8000/api/sell/", {
+    HTTP
+      .get("sell/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(response => (this.sells = response.data));
 
-    axios
-      .get("http://127.0.0.1:8000/api/payment/", {
+    HTTP
+      .get("payment/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(response => {

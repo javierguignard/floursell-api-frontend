@@ -42,7 +42,8 @@ import logout from "vue-material-design-icons/Logout.vue";
 import accountBox from "vue-material-design-icons/AccountBox.vue";
 import truckFast from "vue-material-design-icons/TruckFast.vue";
 import bread from "vue-material-design-icons/BreadSlice.vue";
-import axios from "axios";
+//import {HTTP} from "./ApiConnection";
+import {HTTP} from "./ApiConnection"
 
 export default {
   name: "Navbar",
@@ -69,12 +70,12 @@ export default {
     }
   },
   created() {
-    axios
-      .get("http://127.0.0.1:8000/api/user_type/", {
+      HTTP
+      .get("user_type/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
-      .then(response => this.userType = response.data[0].account.user_type)
-      .catch(err =>
+      .then((response) => this.userType = response.data[0].account.user_type)
+      .catch((err) =>
         this.$message({
           showClose: true,
           message: err,

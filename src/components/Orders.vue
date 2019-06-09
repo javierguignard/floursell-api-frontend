@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 import cart from "vue-material-design-icons/CartOutline.vue";
 import eye from "vue-material-design-icons/Eye.vue";
 export default {
@@ -169,8 +169,8 @@ export default {
     localStorage.removeItem("paymentID");
     localStorage.removeItem("orderID");
     localStorage.removeItem("date");
-    axios
-      .get("http://127.0.0.1:8000/api/order/", {
+    HTTP
+      .get("order/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(response => {
@@ -187,8 +187,8 @@ export default {
           });
         }
       });
-    axios
-      .get("http://127.0.0.1:8000/api/customer/", {
+    HTTP
+      .get("customer/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(response => {

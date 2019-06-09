@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 export default {
   name: "AddClient",
   data() {
@@ -59,9 +59,9 @@ export default {
     },
     submit() {
       if (localStorage.getItem("clientID")) {
-        axios
+        HTTP
           .put(
-            "http://127.0.0.1:8000/api/customer/" +
+            "customer/" +
               localStorage.getItem("clientID") +
               "/",
             {
@@ -93,9 +93,9 @@ export default {
             })
           );
       } else {
-        axios
+        HTTP
           .post(
-            "http://127.0.0.1:8000/api/customer/",
+            "customer/",
             {
               name: this.client.name,
               address: this.client.address,
@@ -127,9 +127,9 @@ export default {
       }
     },
     borrar() {
-      axios
+      HTTP
         .delete(
-          "http://127.0.0.1:8000/api/customer/" +
+          "customer/" +
             localStorage.getItem("clientID") +
             "/",
           {
@@ -157,9 +157,9 @@ export default {
   },
   beforeCreate() {
     if (localStorage.getItem("clientID")) {
-      axios
+      HTTP
         .get(
-          "http://127.0.0.1:8000/api/customer/" +
+          "customer/" +
             localStorage.getItem("clientID") +
             "/",
           {

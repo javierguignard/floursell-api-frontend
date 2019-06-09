@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 import Magnify from "vue-material-design-icons/Magnify.vue";
 export default {
   name: "productionOrders",
@@ -96,8 +96,8 @@ export default {
     localStorage.removeItem("paymentID");
     localStorage.removeItem("orderID");
     localStorage.removeItem("date");
-    axios
-      .get("http://127.0.0.1:8000/api/product/", {
+    HTTP
+      .get("product/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(res => {
@@ -111,8 +111,8 @@ export default {
         }
       });
 
-    axios
-      .get("http://127.0.0.1:8000/api/productionOrder/", {
+    HTTP
+      .get("productionOrder/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(res => (this.orders = res.data));

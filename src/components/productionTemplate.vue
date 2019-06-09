@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 export default {
   name: "productionTemplate",
   data() {
@@ -56,8 +56,8 @@ export default {
     },
     submit() {
       if (this.reportID) {
-        axios.put(
-          "http://127.0.0.1:8000/api/report/" + this.reportID + "/",
+        HTTP.put(
+          "report/" + this.reportID + "/",
           {
             items: this.postItems()
           },
@@ -79,7 +79,7 @@ export default {
             })
           );
       }else{
-        axios.post("http://127.0.0.1:8000/api/report/",
+        HTTP.post("report/",
           {
             items: this.postItems(),
             creation_date: this.date,
@@ -109,8 +109,8 @@ export default {
     var x;
     var y;
 
-    axios
-      .get("http://127.0.0.1:8000/api/product/", {
+    HTTP
+      .get("product/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(res => {
@@ -124,8 +124,8 @@ export default {
         }
       });
 
-    axios
-      .get("http://127.0.0.1:8000/api/report/", {
+    HTTP
+      .get("report/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(response => {

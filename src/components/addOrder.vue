@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import {HTTP} from "./ApiConnection";
 export default {
   name: "AddOrder",
   data() {
@@ -99,9 +99,9 @@ export default {
       this.move(route);
     },
     borrar() {
-      axios
+      HTTP
         .delete(
-          "http://127.0.0.1:8000/api/order/" +
+          "order/" +
             localStorage.getItem("orderID") +
             "/",
           {
@@ -136,9 +136,9 @@ export default {
     },
     submit() {
       if (this.orderID) {
-        axios
+        HTTP
           .put(
-            "http://127.0.0.1:8000/api/order/" +
+            "order/" +
               localStorage.getItem("orderID") +
               "/",
             {
@@ -170,9 +170,9 @@ export default {
             })
           );
       } else {
-        axios
+        HTTP
           .post(
-            "http://127.0.0.1:8000/api/order/",
+            "order/",
             {
               items: this.postItems(),
               created_by: null,
@@ -204,8 +204,8 @@ export default {
     }
   },
   beforeCreate() {
-    axios
-      .get("http://127.0.0.1:8000/api/customer/", {
+    HTTP
+      .get("customer/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(response => (this.clients = response.data))
@@ -217,8 +217,8 @@ export default {
         })
       );
 
-    axios
-      .get("http://127.0.0.1:8000/api/product/", {
+    HTTP
+      .get("product/", {
         headers: { Authorization: `Token ${localStorage.getItem("key")} ` }
       })
       .then(res => {
@@ -229,9 +229,9 @@ export default {
       });
 
     if (localStorage.getItem("orderID")) {
-      axios
+      HTTP
         .get(
-          "http://127.0.0.1:8000/api/order/" +
+          "order/" +
             localStorage.getItem("orderID") +
             "/",
           {
