@@ -37,7 +37,7 @@ const routes = [
     component: App,
     children: [
       { path: '/login', name: 'login', component: Login },
-      { path: '/registration', name: 'registration', component: Registration }
+      { path: '/register', name: 'registration', component: Registration }
     ]
   }
 ]

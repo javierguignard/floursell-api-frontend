@@ -40,7 +40,7 @@
 
 <script>
 //import {HTTP} from "./ApiConnection";
-import {HTTP_LOGIN} from "./ApiConnection"
+import {HTTP_LOGIN,CSRF_TOKEN} from "./ApiConnection"
 
 export default {
   name: "Registration",
@@ -59,7 +59,7 @@ export default {
           username: this.username,
           password1: this.password1,
           password2: this.password2
-        })
+        },{headers: {"X-CSRFToken":CSRF_TOKEN }})
         .then(res =>
           this.$message({
             showClose: true,
