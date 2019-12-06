@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import {HTTP} from "./ApiConnection";
+//import {HTTP} from "./ApiConnection";
+import {HTTP_LOGIN} from "./ApiConnection"
 
 export default {
   name: "Registration",
@@ -53,8 +54,8 @@ export default {
   },
   methods: {
     submit() {
-      HTTP
-        .post("http://127.0.0.1:8000/registration/", {
+      HTTP_LOGIN
+         .post("/registration/", {
           username: this.username,
           password1: this.password1,
           password2: this.password2
