@@ -12,6 +12,8 @@ if (process.env.API_ENDPOINT) {
 
 const API_ENDPOINT = endpoint;
 
+axios.defaults.headers.common['Access-Control-Request-Headers'] = null
+axios.defaults.headers.common['Access-Control-Request-Method'] = null
 
 export const HTTP = axios.create({
     baseURL: API_ENDPOINT + 'api/',
