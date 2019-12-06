@@ -45,7 +45,7 @@
 
 <script>
     //import {HTTP} from "./ApiConnection";
-    import {HTTP_LOGIN} from "./ApiConnection"
+    import {HTTP_LOGIN,CSRF_TOKEN} from "./ApiConnection"
 
     export default {
         name: "Login",
@@ -65,7 +65,7 @@
                         username: this.username,
                         email: "",
                         password: this.password,
-                    })
+                    },{headers: {"X-CSRFToken":CSRF_TOKEN }})
                     .then((response) => {
                         localStorage.setItem('key', response.data.key);
                         if (response.data.key) {
