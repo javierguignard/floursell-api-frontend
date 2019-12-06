@@ -7,7 +7,7 @@ let endpoint = "";
 if (process.env.API_ENDPOINT) {
     endpoint = process.env.API_ENDPOINT;
 } else {
-    endpoint = "http://backend:8000/"
+    endpoint = "http://floursell.kaajavi.com/"
 }
 
 const API_ENDPOINT = endpoint;
